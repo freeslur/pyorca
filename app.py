@@ -1,13 +1,14 @@
-from flask import Flask
+from flask import Flask, jsonify
 
 from orcalib import system_info
 
 app = Flask(__name__)
+app.config["JSON_AS_ASCII"] = False
 
 
 @app.route("/")
 def index():
-    return system_info.result
+    return jsonify(system_info.result)
     # return template_rendered("index.html", system_info=systeminfo.result)
 
 
