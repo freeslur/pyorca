@@ -3,12 +3,10 @@ import xmltodict
 
 import orcalib.orca_default as orca
 
-xml = """<data>
-        <private_objects type="record">
-                <Request_Date type="string">2014-10-23</Request_Date>
-                <Request_Time type="string">16:52:00</Request_Time>
-        </private_objects>
-</data>"""
+xml = orca.post_param_default("private_objects",
+                              """<Request_Date type="string">2014-10-23</Request_Date>
+                <Request_Time type="string">16:52:00</Request_Time>"""
+                              )
 result = xmltodict.parse(
     requests.post(
         url=orca.default_url + orca.system_info,
