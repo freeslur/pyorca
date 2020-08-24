@@ -16,15 +16,26 @@ def sys_info():
 
 
 @app.route("/api/patient_basic_info", methods=["GET"])
-# @cross_origin(methods=["GET"])
 def patient_basic_info():
-    return jsonify(patient.result["Patient_Information"])
+    res = patient.result
+    pprint.pprint(res)
+    if res["Api_Result"]["#text"] == "10":
+        return res["Api_Result_Message"]["#text"]
+    return jsonify(res["Patient_Information"])
 
 
-@app.route("/api/delete_patient", methods=["POST"])
-# @cross_origin(allow_headers="*", origins="*", methods=["GET", "HEAD", "POST", "OPTIONS", "PUT", "PATCH", "DELETE"])
+@app.route("/api/delete_patient", methods=["DELETE"])
 def delete_patient():
-    return patient.delete(request.json)
+    res_data = patient.delete(request.json)
+    pprint.pprint(res_data.decode("utf-8"))
+    return res_data
+
+
+@app.route("/api/regist_patient", methods=["POST"])
+def regist_patient():
+    res_data = patient.regist(request.json)
+    pprint.pprint(res_data.decode("utf-8"))
+    return res_data
 
 
 if __name__ == "__main__":
