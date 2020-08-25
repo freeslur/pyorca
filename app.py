@@ -1,8 +1,9 @@
-from flask import Flask, jsonify, request
-from flask_cors import CORS, cross_origin
-from orcalib import system_info, patient
-
 import pprint
+
+from flask import Flask, jsonify, request
+from flask_cors import CORS
+
+from orcalib import patient, system_info
 
 app = Flask(__name__)
 app.config["JSON_AS_ASCII"] = False
