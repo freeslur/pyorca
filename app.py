@@ -18,10 +18,9 @@ def sys_info():
 
 @app.route("/api/patient_basic_info", methods=["GET"])
 def patient_basic_info():
-    res = patient.result
-    pprint.pprint(res)
-    if res["Api_Result"]["#text"] == "10":
-        return res["Api_Result_Message"]["#text"]
+    res = patient.info("00000")
+    if res["Api_Result"] == "10":
+        return res["Api_Result_Message"]
     return jsonify(res["Patient_Information"])
 
 

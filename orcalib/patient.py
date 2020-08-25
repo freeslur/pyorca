@@ -1,15 +1,19 @@
 import pprint
 
-import requests
-import xmltodict
-
 import orcalib.orca_default as orca
+import requests
+from orcalib.orca_formatter import res_to_json
 
-result = xmltodict.parse(
-    requests.get(
-        url=orca.default_url + orca.patient_basic_info + "id=00000", auth=orca.auth,
-    ).content
-)["xmlio2"]["patientinfores"]
+
+def info(patient_id):
+    result = res_to_json(
+        requests.get(
+            url=orca.default_url + orca.patient_basic_info + "id=" + patient_id,
+            auth=orca.auth,
+        ).content,
+        "patientinfores",
+    )
+    return result
 
 
 def delete(request_data):

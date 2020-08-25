@@ -107,110 +107,48 @@ res = """<?xml version="1.0" encoding="UTF-8"?>
 result = xmltodict.parse(res)
 result_json = dict(json.loads(json.dumps(result)))
 
-# pprint.pprint(result_json)
-# pprint.pprint(result_json)
-
-a = result_json.keys()
 i = 0
-dict_data = {}
-
-
-def parse_res(key, origin, result={}, sub_dict={}, sub_list=[]):
-    global i
-    print("-----------------------------------------")
-    # print(origin)
-    print("------ result ------", result)
-    print("-----------------------------------------")
-    data = origin[key]
-    keys = data.keys()
-    for sub_key in keys:
-        i = i + 1
-        print(i)
-        if sub_key == "@type":
-            if data[sub_key] == "record":
-                result[key] = {}
-                print("result : record : : : ", result)
-            elif data[sub_key] == "array":
-                result[key] = []
-                print("result : array : : : ", result)
-            print("1. repeat--------------------->")
-            # print(i)
-            # print(i, sub_key)
-            # result[key][sub_key] = parse_res(sub_key, data)
-            print("1. sub_key", result)
-        else:
-            if "#text" in data[sub_key].keys():
-                print(i, sub_key, data[sub_key]["#text"])
-                result[key][sub_key] = data[sub_key]["#text"]
-            else:
-                print("2. repeat--------------------->")
-                print(i, sub_key, "!!!!!!!!!!!!!!!!!!!!", result[key])
-                result[key][sub_key] = {parse_res(sub_key, data)}
-                # result[key][sub_key] = parse_res(sub_key, data)
-    # if "@type" in data:
-    #     if data["@type"] == "record":
-    #         dict_data[key] = {}
-    #     elif data["@type"] == "array":
-    #         dict_data[key] = []
-    # for key in keys:
-    #     if key != "@type":
-    #         sub_data = data[key]
-    #         print(i, key, sub_data)
-    #         i = i + 1
-    #         if ("#text" in sub_data.keys()):
-    #             dict_data[key] = sub_data["#text"]
-    #             print(i, dict_data)
-    #             i = i + 1
-    #         else:
-    #             print(i, key)
-    #             i = i + 1
-    #             parse_res(key, origin=sub_data)
-    return result
 
 
 pprint.pprint(result_json["xmlio2"])
 print("======================================================")
-pprint.pprint(parse_res("patientinfores", origin=result_json["xmlio2"]))
-# main_dict = {
-#     "test": {
-#         "a1": "a1",
-#         "b1": {
-#             "bb1": "bb1",
-#             "bb2": "bb2",
-#             "bb3": {
-#                 "bbb1": "bbb1",
-#                 "bbb2": "bbb2",
-#                 "bbb3": [
-#                     {
-#                         "bbbb": {
-#                             "bbbb1": "bbbb1"
-#                         }
-#                     },
-#                     {
-#                         "bbbb": {
-#                             "bbbb2": "bbbb2"
-#                         }
-#                     }
-#                 ]
-#             }
-#         }
-#     }
-# }
+# pprint.pprint(parse_res("patientinfores", origin=result_json["xmlio2"]))
+
+origin = result_json["xmlio2"]
+with open(file="result.json", mode="w", encoding="utf-8") as fp:
+    json.dump(origin, fp, ensure_ascii=False, indent=2)
 
 
-# def repeatdict(original_data={}, key="test", result_data={}):
-#     data = original_data[key]
-#     result_data[key] = {}
-#     for sub_key in data.keys():
-#         result_data[key][sub_key] = data[sub_key]
-#         print(sub_key, data[sub_key])
+def orca_api_formatter(origin):
+    if type(origin) is list:
+        origin_array = []
+        for origin_data in origin:
+            origin_array.append(orca_api_formatter(origin_data))
+        origin = origin_array
+    else:
+        if origin["@type"] == "record":
+            for key in origin.keys():
+                if key != "@type":
+                    if "#text" in origin[key].keys():
+                        origin[key] = origin[key]["#text"]
+                    else:
+                        origin[key] = orca_api_formatter(origin[key])
+            if "@type" in origin.keys():
+                del origin["@type"]
+        elif origin["@type"] == "array":
+            origin_array = []
+            for key in origin.keys():
+                if key != "@type":
+                    if type(origin[key]) is list:
+                        origin_array = orca_api_formatter(origin[key])
+                    else:
+                        origin_array.append(orca_api_formatter(origin[key]))
+            origin = origin_array
 
-#     pprint.pprint(data)
-
-#     return result_data
+    return origin
 
 
-# odata = repeatdict(original_data=main_dict)
-
-# print("--> result <--")
-# pprint.pprint(odata)
+last_data = orca_api_formatter(origin["patientinfores"])
+pprint.pprint(last_data)
+with open(file="result2.json", mode="w", encoding="utf-8") as fp:
+    json.dump(last_data, fp, ensure_ascii=False, indent=2)
