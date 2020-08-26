@@ -1,0 +1,86 @@
+{
+  "Information_Date": "2014-07-17",
+  "Information_Time": "10:38:30",
+  "Api_Result": "00",
+  "Api_Result_Message": "登録終了",
+  "Reskey": "Acceptance_Info",
+  "Patient_Information": {
+    "Patient_ID": "00036",
+    "WholeName": "日医　太郎",
+    "WholeName_inKana": "ニチイ　タロウ",
+    "BirthDate": "1970-01-01",
+    "Sex": "1",
+    "HouseHolder_WholeName": "日医　太郎",
+    "Relationship": "本人",
+    "Occupation": "会社員",
+    "CellularNumber": "09011112222",
+    "FaxNumber": "03-0011-2233",
+    "EmailAddress": "test@tt.dot.jp",
+    "Home_Address_Information": {
+      "Address_ZipCode": "1130021",
+      "WholeAddress1": "東京都文京区本駒込",
+      "WholeAddress2": "６−１６−３",
+      "PhoneNumber1": "03-3333-2222",
+      "PhoneNumber2": "03-3333-1133"
+    },
+    "WorkPlace_Information": {
+      "WholeName": "てすと　株式会社",
+      "Address_ZipCode": "1130022",
+      "WholeAddress1": "東京都文京区本駒込",
+      "WholeAddress2": "５−１２−１１",
+      "PhoneNumber": "03-3333-2211"
+    },
+    "Contraindication1": "状態",
+    "Allergy1": "アレルギ",
+    "Infection1": "感染症",
+    "Comment1": "コメント",
+    "HealthInsurance_Information": [
+      {
+        "Insurance_Combination_Number": "0001",
+        "InsuranceProvider_Class": "060",
+        "InsuranceProvider_Number": "138057",
+        "InsuranceProvider_WholeName": "国保",
+        "HealthInsuredPerson_Symbol": "０１",
+        "HealthInsuredPerson_Number": "１２３４５６７",
+        "HealthInsuredPerson_Assistance": "3",
+        "RelationToInsuredPerson": "1",
+        "Certificate_StartDate": "2010-05-01",
+        "Certificate_ExpiredDate": "9999-12-31"
+      },
+      {
+        "Insurance_Combination_Number": "0002",
+        "InsuranceProvider_Class": "060",
+        "InsuranceProvider_Number": "138057",
+        "InsuranceProvider_WholeName": "国保",
+        "HealthInsuredPerson_Symbol": "０１",
+        "HealthInsuredPerson_Number": "１２３４５６７",
+        "HealthInsuredPerson_Assistance": "3",
+        "RelationToInsuredPerson": "1",
+        "Certificate_StartDate": "2010-05-01",
+        "Certificate_ExpiredDate": "9999-12-31",
+        "PublicInsurance_Information": [
+          {
+            "PublicInsurance_Class": "010",
+            "PublicInsurance_Name": "感３７の２",
+            "PublicInsurer_Number": "10131142",
+            "PublicInsuredPerson_Number": "1234566",
+            "Rate_Admission": "0.05",
+            "Money_Admission": "0",
+            "Rate_Outpatient": "0.05",
+            "Money_Outpatient": "0",
+            "Certificate_IssuedDate": "2010-05-01",
+            "Certificate_ExpiredDate": "9999-12-31"
+          }
+        ]
+      }
+    ],
+    "Payment_Information": {
+      "Reduction_Reason": "01",
+      "Reduction_Reason_Name": "低所得",
+      "Discount": "01",
+      "Discount_Name": "10(%)",
+      "Ic_Code": "02",
+      "Ic_Code_Name": "振込"
+    }
+  }
+}

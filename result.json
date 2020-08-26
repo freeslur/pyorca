@@ -1,13 +1,13 @@
 {
-  "patientinfores": {
+  "patientmodres": {
     "@type": "record",
     "Information_Date": {
       "@type": "string",
-      "#text": "2018-10-02"
+      "#text": "2014-07-17"
     },
     "Information_Time": {
       "@type": "string",
-      "#text": "11:25:31"
+      "#text": "10:38:30"
     },
     "Api_Result": {
       "@type": "string",
@@ -15,286 +15,282 @@
     },
     "Api_Result_Message": {
       "@type": "string",
-      "#text": "処理終了"
+      "#text": "登録終了"
     },
     "Reskey": {
       "@type": "string",
-      "#text": "Patient Info"
+      "#text": "Acceptance_Info"
     },
     "Patient_Information": {
       "@type": "record",
       "Patient_ID": {
         "@type": "string",
-        "#text": "00200"
+        "#text": "00036"
       },
       "WholeName": {
         "@type": "string",
-        "#text": "てすと　受付"
+        "#text": "日医　太郎"
       },
       "WholeName_inKana": {
         "@type": "string",
-        "#text": "テスト　ウケツケ"
+        "#text": "ニチイ　タロウ"
       },
       "BirthDate": {
         "@type": "string",
-        "#text": "1975-01-01"
+        "#text": "1970-01-01"
       },
       "Sex": {
         "@type": "string",
-        "#text": "2"
+        "#text": "1"
       },
       "HouseHolder_WholeName": {
         "@type": "string",
-        "#text": "てすと　受付"
+        "#text": "日医　太郎"
       },
-      "TestPatient_Flag": {
+      "Relationship": {
         "@type": "string",
-        "#text": "0"
+        "#text": "本人"
       },
-      "Reduction_Reason": {
+      "Occupation": {
         "@type": "string",
-        "#text": "00"
+        "#text": "会社員"
       },
-      "Reduction_Reason_Name": {
+      "CellularNumber": {
         "@type": "string",
-        "#text": "該当なし"
+        "#text": "09011112222"
       },
-      "Discount": {
+      "FaxNumber": {
         "@type": "string",
-        "#text": "00"
+        "#text": "03-0011-2233"
       },
-      "Discount_Name": {
+      "EmailAddress": {
         "@type": "string",
-        "#text": "該当なし"
+        "#text": "test@tt.dot.jp"
       },
-      "Condition1": {
-        "@type": "string",
-        "#text": "00"
+      "Home_Address_Information": {
+        "@type": "record",
+        "Address_ZipCode": {
+          "@type": "string",
+          "#text": "1130021"
+        },
+        "WholeAddress1": {
+          "@type": "string",
+          "#text": "東京都文京区本駒込"
+        },
+        "WholeAddress2": {
+          "@type": "string",
+          "#text": "６−１６−３"
+        },
+        "PhoneNumber1": {
+          "@type": "string",
+          "#text": "03-3333-2222"
+        },
+        "PhoneNumber2": {
+          "@type": "string",
+          "#text": "03-3333-1133"
+        }
       },
-      "Condition1_Name": {
-        "@type": "string",
-        "#text": "該当なし"
+      "WorkPlace_Information": {
+        "@type": "record",
+        "WholeName": {
+          "@type": "string",
+          "#text": "てすと　株式会社"
+        },
+        "Address_ZipCode": {
+          "@type": "string",
+          "#text": "1130022"
+        },
+        "WholeAddress1": {
+          "@type": "string",
+          "#text": "東京都文京区本駒込"
+        },
+        "WholeAddress2": {
+          "@type": "string",
+          "#text": "５−１２−１１"
+        },
+        "PhoneNumber": {
+          "@type": "string",
+          "#text": "03-3333-2211"
+        }
       },
-      "Condition2": {
+      "Contraindication1": {
         "@type": "string",
-        "#text": "00"
+        "#text": "状態"
       },
-      "Condition2_Name": {
+      "Allergy1": {
         "@type": "string",
-        "#text": "該当なし"
+        "#text": "アレルギ"
       },
-      "Condition3": {
+      "Infection1": {
         "@type": "string",
-        "#text": "00"
+        "#text": "感染症"
       },
-      "Condition3_Name": {
+      "Comment1": {
         "@type": "string",
-        "#text": "該当なし"
-      },
-      "Ic_Code": {
-        "@type": "string",
-        "#text": "01"
-      },
-      "Ic_Code_Name": {
-        "@type": "string",
-        "#text": "現金"
-      },
-      "Community_Cid_Agree": {
-        "@type": "string",
-        "#text": "False"
-      },
-      "FirstVisit_Date": {
-        "@type": "string",
-        "#text": "2017-12-13"
-      },
-      "LastVisit_Date": {
-        "@type": "string",
-        "#text": "2018-01-15"
+        "#text": "コメント"
       },
       "HealthInsurance_Information": {
         "@type": "array",
-        "HealthInsurance_Information_child": {
-          "@type": "record",
-          "Insurance_Combination_Number": {
-            "@type": "string",
-            "#text": "0001"
-          },
-          "InsuranceCombination_Rate_Admission": {
-            "@type": "string",
-            "#text": "0.30"
-          },
-          "InsuranceCombination_Rate_Outpatient": {
-            "@type": "string",
-            "#text": "0.30"
-          },
-          "Insurance_Nondisplay": {
-            "@type": "string",
-            "#text": "N"
-          },
-          "InsuranceProvider_Class": {
-            "@type": "string",
-            "#text": "009"
-          },
-          "InsuranceProvider_Number": {
-            "@type": "string",
-            "#text": "01320027"
-          },
-          "InsuranceProvider_WholeName": {
-            "@type": "string",
-            "#text": "協会"
-          },
-          "RelationToInsuredPerson": {
-            "@type": "string",
-            "#text": "1"
-          },
-          "HealthInsuredPerson_WholeName": {
-            "@type": "string",
-            "#text": "てすと　受付"
-          },
-          "Certificate_StartDate": {
-            "@type": "string",
-            "#text": "2017-11-21"
-          },
-          "Certificate_ExpiredDate": {
-            "@type": "string",
-            "#text": "9999-12-31"
-          },
-          "Certificate_GetDate": {
-            "@type": "string",
-            "#text": "2010-10-10"
-          },
-          "Insurance_CheckDate": {
-            "@type": "string",
-            "#text": "2017-11-21"
-          }
-        }
-      },
-      "Care_Information": {
-        "@type": "record",
-        "Community_Disease": {
-          "@type": "array",
-          "Community_Disease_child": [
-            {
-              "@type": "record",
-              "Target_Disease": {
-                "@type": "string",
-                "#text": "True"
-              }
-            },
-            {
-              "@type": "record",
-              "Target_Disease": {
-                "@type": "string",
-                "#text": "True"
-              }
-            },
-            {
-              "@type": "record",
-              "Target_Disease": {
-                "@type": "string",
-                "#text": "True"
-              }
-            },
-            {
-              "@type": "record",
-              "Target_Disease": {
-                "@type": "string",
-                "#text": "True"
-              }
-            }
-          ]
-        }
-      },
-      "Personally_Information": {
-        "@type": "record",
-        "Pregnant_Class": {
-          "@type": "string",
-          "#text": "True"
-        },
-        "Community_Disease2": {
-          "@type": "string",
-          "#text": "True"
-        },
-        "Community_Disease3": {
-          "@type": "string",
-          "#text": "True"
-        }
-      },
-      "Auto_Management_Information": {
-        "@type": "array",
-        "Auto_Management_Information_child": [
+        "HealthInsurance_Information_child": [
           {
             "@type": "record",
-            "Medication_Code": {
+            "Insurance_Combination_Number": {
               "@type": "string",
-              "#text": "113002850"
+              "#text": "0001"
             },
-            "Medication_Name": {
+            "InsuranceProvider_Class": {
               "@type": "string",
-              "#text": "てんかん指導料"
+              "#text": "060"
             },
-            "Medication_EndDate": {
+            "InsuranceProvider_Number": {
+              "@type": "string",
+              "#text": "138057"
+            },
+            "InsuranceProvider_WholeName": {
+              "@type": "string",
+              "#text": "国保"
+            },
+            "HealthInsuredPerson_Symbol": {
+              "@type": "string",
+              "#text": "０１"
+            },
+            "HealthInsuredPerson_Number": {
+              "@type": "string",
+              "#text": "１２３４５６７"
+            },
+            "HealthInsuredPerson_Assistance": {
+              "@type": "string",
+              "#text": "3"
+            },
+            "RelationToInsuredPerson": {
+              "@type": "string",
+              "#text": "1"
+            },
+            "Certificate_StartDate": {
+              "@type": "string",
+              "#text": "2010-05-01"
+            },
+            "Certificate_ExpiredDate": {
               "@type": "string",
               "#text": "9999-12-31"
             }
           },
           {
             "@type": "record",
-            "Medication_Code": {
+            "Insurance_Combination_Number": {
               "@type": "string",
-              "#text": "113002910"
+              "#text": "0002"
             },
-            "Medication_Name": {
+            "InsuranceProvider_Class": {
               "@type": "string",
-              "#text": "難病外来指導管理料"
+              "#text": "060"
             },
-            "Medication_EndDate": {
+            "InsuranceProvider_Number": {
+              "@type": "string",
+              "#text": "138057"
+            },
+            "InsuranceProvider_WholeName": {
+              "@type": "string",
+              "#text": "国保"
+            },
+            "HealthInsuredPerson_Symbol": {
+              "@type": "string",
+              "#text": "０１"
+            },
+            "HealthInsuredPerson_Number": {
+              "@type": "string",
+              "#text": "１２３４５６７"
+            },
+            "HealthInsuredPerson_Assistance": {
+              "@type": "string",
+              "#text": "3"
+            },
+            "RelationToInsuredPerson": {
+              "@type": "string",
+              "#text": "1"
+            },
+            "Certificate_StartDate": {
+              "@type": "string",
+              "#text": "2010-05-01"
+            },
+            "Certificate_ExpiredDate": {
               "@type": "string",
               "#text": "9999-12-31"
+            },
+            "PublicInsurance_Information": {
+              "@type": "array",
+              "PublicInsurance_Information_child": {
+                "@type": "record",
+                "PublicInsurance_Class": {
+                  "@type": "string",
+                  "#text": "010"
+                },
+                "PublicInsurance_Name": {
+                  "@type": "string",
+                  "#text": "感３７の２"
+                },
+                "PublicInsurer_Number": {
+                  "@type": "string",
+                  "#text": "10131142"
+                },
+                "PublicInsuredPerson_Number": {
+                  "@type": "string",
+                  "#text": "1234566"
+                },
+                "Rate_Admission": {
+                  "@type": "string",
+                  "#text": "0.05"
+                },
+                "Money_Admission": {
+                  "@type": "string",
+                  "#text": "0"
+                },
+                "Rate_Outpatient": {
+                  "@type": "string",
+                  "#text": "0.05"
+                },
+                "Money_Outpatient": {
+                  "@type": "string",
+                  "#text": "0"
+                },
+                "Certificate_IssuedDate": {
+                  "@type": "string",
+                  "#text": "2010-05-01"
+                },
+                "Certificate_ExpiredDate": {
+                  "@type": "string",
+                  "#text": "9999-12-31"
+                }
+              }
             }
           }
         ]
       },
-      "Patient_Contra_Information": {
+      "Payment_Information": {
         "@type": "record",
-        "Patient_Contra_Info": {
-          "@type": "array",
-          "Patient_Contra_Info_child": [
-            {
-              "@type": "record",
-              "Medication_Code": {
-                "@type": "string",
-                "#text": "610406079"
-              },
-              "Medication_Name": {
-                "@type": "string",
-                "#text": "ガスター散２％"
-              },
-              "Medication_EndDate": {
-                "@type": "string",
-                "#text": "9999-12-31"
-              },
-              "Contra_StartDate": {
-                "@type": "string",
-                "#text": "2018-05-03"
-              }
-            },
-            {
-              "@type": "record",
-              "Medication_Code": {
-                "@type": "string",
-                "#text": "610406047"
-              },
-              "Medication_Name": {
-                "@type": "string",
-                "#text": "ウテロン錠５ｍｇ"
-              },
-              "Medication_EndDate": {
-                "@type": "string",
-                "#text": "9999-12-31"
-              }
-            }
-          ]
+        "Reduction_Reason": {
+          "@type": "string",
+          "#text": "01"
+        },
+        "Reduction_Reason_Name": {
+          "@type": "string",
+          "#text": "低所得"
+        },
+        "Discount": {
+          "@type": "string",
+          "#text": "01"
+        },
+        "Discount_Name": {
+          "@type": "string",
+          "#text": "10(%)"
+        },
+        "Ic_Code": {
+          "@type": "string",
+          "#text": "02"
+        },
+        "Ic_Code_Name": {
+          "@type": "string",
+          "#text": "振込"
         }
       }
     }

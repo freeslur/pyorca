@@ -1,39 +1,47 @@
 import json
+from xml.dom.minidom import parseString
 
-import xmltodict
+import dicttoxml
 
 
-def res_to_json(response, key):
-    result = xmltodict.parse(response)
-    origin = dict(json.loads(json.dumps(result)))["xmlio2"][key]
+def res_to_json(data):
 
-    if type(origin) is list:
-        origin_array = []
-        for origin_data in origin:
-            origin_array.append(res_to_json(origin_data))
-        origin = origin_array
+    if type(data) is list:
+        json_data_array = []
+        for json_data in data:
+            json_data_array.append(res_to_json(json_data))
+        data = json_data_array
     else:
-        if origin["@type"] == "record":
-            for key in origin.keys():
+        if data["@type"] == "record":
+            for key in data.keys():
                 if key != "@type":
-                    if "#text" in origin[key].keys():
-                        origin[key] = origin[key]["#text"]
+                    if "#text" in data[key].keys():
+                        data[key] = data[key]["#text"]
                     else:
-                        origin[key] = res_to_json(origin[key])
-            if "@type" in origin.keys():
-                del origin["@type"]
-        elif origin["@type"] == "array":
-            origin_array = []
-            for key in origin.keys():
+                        data[key] = res_to_json(data[key])
+            if "@type" in data.keys():
+                del data["@type"]
+        elif data["@type"] == "array":
+            json_data_array = []
+            for key in data.keys():
                 if key != "@type":
-                    if type(origin[key]) is list:
-                        origin_array = res_to_json(origin[key])
+                    if type(data[key]) is list:
+                        json_data_array = res_to_json(data[key])
                     else:
-                        origin_array.append(res_to_json(origin[key]))
-            origin = origin_array
+                        json_data_array.append(res_to_json(data[key]))
+            data = json_data_array
+    return data
 
-    return origin
 
+def req_to_xml(req_data):
 
-def req_to_xml():
-    return "null"
+    def item_del_func(x): return x+"_child"
+
+    data = {"patientmodreq": json.loads(req_data)}
+
+    xml = dicttoxml(data, root=True, custom_root="data",
+                    attr_type=True, item_func=item_del_func)
+    string_xml = parseString(xml).toxml()
+    result_xml = string_xml.replace('type="str"', 'type="string"').replace(
+        'type="dict"', 'type="record"').replace('type="list"', 'type="array"')
+    return result_xml

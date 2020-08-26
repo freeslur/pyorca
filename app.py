@@ -18,13 +18,13 @@ def sys_info():
 
 @app.route("/api/patient_basic_info", methods=["GET"])
 def patient_basic_info():
-    res = patient.info("00000")
+    res = patient.info("00012")
     if res["Api_Result"] == "10":
         return res["Api_Result_Message"]
     return jsonify(res["Patient_Information"])
 
 
-@app.route("/api/delete_patient", methods=["DELETE"])
+@app.route("/api/delete_patient", methods=["POST"])
 def delete_patient():
     res_data = patient.delete(request.json)
     pprint.pprint(res_data.decode("utf-8"))
