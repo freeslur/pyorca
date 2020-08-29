@@ -9,12 +9,15 @@ from orcalib.orca_formatter import res_to_json
 
 
 def info(patient_id):
-    ordered_dict_data = xmltodict.parse(requests.get(
-        url=orca.default_url + orca.patient_basic_info + "id=" + patient_id,
-        auth=orca.auth,
-    ).content)
-    json_data = dict(json.loads(json.dumps(ordered_dict_data)))[
-        "xmlio2"]["patientinfores"]
+    ordered_dict_data = xmltodict.parse(
+        requests.get(
+            url=orca.default_url + orca.patient_basic_info + "id=" + patient_id,
+            auth=orca.auth,
+        ).content
+    )
+    json_data = dict(json.loads(json.dumps(ordered_dict_data)))["xmlio2"][
+        "patientinfores"
+    ]
     result = res_to_json(json_data)
     return result
 
@@ -31,8 +34,7 @@ def delete(request_data):
             "<WholeName_inKana type='string'>"
             + req_data["name_kana"]
             + "</WholeName_inKana>"
-            "<BirthDate type='string'>" +
-            req_data["birth_date"] + "</BirthDate>"
+            "<BirthDate type='string'>" + req_data["birth_date"] + "</BirthDate>"
             "<Sex type='string'>" + req_data["sex"] + "</Sex>"
         ),
     )
@@ -57,8 +59,7 @@ def regist(request_data):
             "<WholeName_inKana type='string'>"
             + req_data["name_kana"]
             + "</WholeName_inKana>"
-            "<BirthDate type='string'>" +
-            req_data["birth_date"] + "</BirthDate>"
+            "<BirthDate type='string'>" + req_data["birth_date"] + "</BirthDate>"
             "<Sex type='string'>" + req_data["sex"] + "</Sex>"
         ),
     )
