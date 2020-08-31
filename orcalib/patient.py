@@ -48,6 +48,11 @@ def delete(request_data):
     return res
 
 
+def newbie(request_data):
+    req_data = request_data["data"]
+    pprint.pprint(req_data)
+
+
 def regist(request_data):
     req_data = request_data["data"]
     pprint.pprint(req_data)
