@@ -14,6 +14,26 @@ Sex TEXT)"""
 )
 
 conn.commit()
+c.execute(
+    """CREATE TABLE acceptances
+(ID INTEGER PRIMARY KEY AUTOINCREMENT,
+Acceptance_ID TEXT,
+Patient_ID TEXT,
+WholeName TEXT,
+WholeName_inKana TEXT,
+BirthDate TEXT,
+Status TEXT,
+Acceptance_Date TEXT,
+Acceptance_Time TEXT,
+InsuranceProvider_WholeName TEXT,
+Department_WholeName TEXT,
+Physician_WholeName TEXT,
+Previouse_Acceptance_Date TEXT,
+Patient_Memo TEXT,
+Acceptance_Memo TEXT)"""
+)
+
+conn.commit()
 c.execute("SELECT * FROM patients")
 result = c.fetchall()
 print(result)
