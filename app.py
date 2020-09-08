@@ -3,17 +3,26 @@ import pprint
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
-from orcalib import patient, system_info
+from orcalib import acceptances, patient, system_info
 
 app = Flask(__name__)
 app.config["JSON_AS_ASCII"] = False
 CORS(app)
 
 
+# システム情報
 @app.route("/api/sys_info", methods=["GET"])
 def sys_info():
     return jsonify(system_info.result)
     # return template_rendered("index.html", system_info=systeminfo.result)
+
+
+# 受付一覧
+@app.route("/api/acceptance_list", methods=["GET"])
+def acceptance_list():
+    res_data = acceptances.list()
+    pprint.pprint(res_data.decode("utf-8"))
+    return res_data
 
 
 @app.route("/api/patient_basic_info", methods=["GET"])
