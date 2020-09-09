@@ -20,14 +20,19 @@ def list():
             + "<Display_Order_Sort type='string'>True</Display_Order_Sort>"
         ),
     )
-    res = requests.post(
-        url=orca.default_url + orca.acceptance_all_list,
-        data=post_data.encode("utf-8"),
-        headers=orca.post_headers,
-        auth=orca.auth,
-    ).content
-    pprint.pprint("OK??")
-    return res
+    ordered_dict_data = xmltodict.parse(
+        requests.post(
+            url=orca.default_url + orca.acceptance_all_list,
+            data=post_data.encode("utf-8"),
+            headers=orca.post_headers,
+            auth=orca.auth,
+        ).content
+    )
+    json_data = dict(json.loads(json.dumps(ordered_dict_data)))["xmlio2"][
+        "acceptlstres"
+    ]
+    result = res_to_json(json_data)
+    return result
 
 
 def newbie(request_data):
