@@ -20,8 +20,8 @@ def sys_info():
 # 受付一覧
 @app.route("/api/acceptance_list", methods=["GET"])
 def acceptance_list():
-    res = acceptances.list()
-    return jsonify(res["Acceptlst_Information"])
+    res = acceptances.list_all()
+    return jsonify(res["data"])
 
 
 @app.route("/api/patient_basic_info", methods=["GET"])
