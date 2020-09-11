@@ -7,6 +7,7 @@ import xmltodict
 
 import orcalib.orca_default as orca
 from orcalib.orca_formatter import res_to_json
+from orcalib.patient import patient_info
 
 
 def calc_age(birth_date):
@@ -20,9 +21,9 @@ def calc_age(birth_date):
     return str(age) + "才"
 
 
-def get_prev_acceptance_date(patient):
-
-    return "2001-09-09"
+def get_prev_acceptance_date(patient_id):
+    patient_data = patient_info(patient_id=patient_id)
+    return patient_data["Patient_Information"]["LastVisit_Date"]
 
 
 def list_all():
@@ -69,7 +70,9 @@ def list_all():
                 ],
                 "Department_WholeName": data["Department_WholeName"],
                 "Physician_WholeName": data["Physician_WholeName"],
-                "Previouse_Acceptance_Date": "",
+                "Previouse_Acceptance_Date": get_prev_acceptance_date(
+                    data["Patient_Information"]["Patient_ID"]
+                ),
                 "Patient_Memo": "",
                 "Acceptance_Memo": "",
             }

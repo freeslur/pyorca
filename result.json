@@ -1,298 +1,50 @@
 {
-  "patientmodres": {
-    "@type": "record",
-    "Information_Date": {
-      "@type": "string",
-      "#text": "2014-07-17"
-    },
-    "Information_Time": {
-      "@type": "string",
-      "#text": "10:38:30"
-    },
-    "Api_Result": {
-      "@type": "string",
-      "#text": "00"
-    },
-    "Api_Result_Message": {
-      "@type": "string",
-      "#text": "登録終了"
-    },
-    "Reskey": {
-      "@type": "string",
-      "#text": "Acceptance_Info"
-    },
-    "Patient_Information": {
-      "@type": "record",
-      "Patient_ID": {
-        "@type": "string",
-        "#text": "00036"
-      },
-      "WholeName": {
-        "@type": "string",
-        "#text": "日医　太郎"
-      },
-      "WholeName_inKana": {
-        "@type": "string",
-        "#text": "ニチイ　タロウ"
-      },
-      "BirthDate": {
-        "@type": "string",
-        "#text": "1970-01-01"
-      },
-      "Sex": {
-        "@type": "string",
-        "#text": "1"
-      },
-      "HouseHolder_WholeName": {
-        "@type": "string",
-        "#text": "日医　太郎"
-      },
-      "Relationship": {
-        "@type": "string",
-        "#text": "本人"
-      },
-      "Occupation": {
-        "@type": "string",
-        "#text": "会社員"
-      },
-      "CellularNumber": {
-        "@type": "string",
-        "#text": "09011112222"
-      },
-      "FaxNumber": {
-        "@type": "string",
-        "#text": "03-0011-2233"
-      },
-      "EmailAddress": {
-        "@type": "string",
-        "#text": "test@tt.dot.jp"
-      },
-      "Home_Address_Information": {
-        "@type": "record",
-        "Address_ZipCode": {
-          "@type": "string",
-          "#text": "1130021"
-        },
-        "WholeAddress1": {
-          "@type": "string",
-          "#text": "東京都文京区本駒込"
-        },
-        "WholeAddress2": {
-          "@type": "string",
-          "#text": "６−１６−３"
-        },
-        "PhoneNumber1": {
-          "@type": "string",
-          "#text": "03-3333-2222"
-        },
-        "PhoneNumber2": {
-          "@type": "string",
-          "#text": "03-3333-1133"
-        }
-      },
-      "WorkPlace_Information": {
-        "@type": "record",
-        "WholeName": {
-          "@type": "string",
-          "#text": "てすと　株式会社"
-        },
-        "Address_ZipCode": {
-          "@type": "string",
-          "#text": "1130022"
-        },
-        "WholeAddress1": {
-          "@type": "string",
-          "#text": "東京都文京区本駒込"
-        },
-        "WholeAddress2": {
-          "@type": "string",
-          "#text": "５−１２−１１"
-        },
-        "PhoneNumber": {
-          "@type": "string",
-          "#text": "03-3333-2211"
-        }
-      },
-      "Contraindication1": {
-        "@type": "string",
-        "#text": "状態"
-      },
-      "Allergy1": {
-        "@type": "string",
-        "#text": "アレルギ"
-      },
-      "Infection1": {
-        "@type": "string",
-        "#text": "感染症"
-      },
-      "Comment1": {
-        "@type": "string",
-        "#text": "コメント"
-      },
-      "HealthInsurance_Information": {
-        "@type": "array",
-        "HealthInsurance_Information_child": [
-          {
-            "@type": "record",
-            "Insurance_Combination_Number": {
-              "@type": "string",
-              "#text": "0001"
-            },
-            "InsuranceProvider_Class": {
-              "@type": "string",
-              "#text": "060"
-            },
-            "InsuranceProvider_Number": {
-              "@type": "string",
-              "#text": "138057"
-            },
-            "InsuranceProvider_WholeName": {
-              "@type": "string",
-              "#text": "国保"
-            },
-            "HealthInsuredPerson_Symbol": {
-              "@type": "string",
-              "#text": "０１"
-            },
-            "HealthInsuredPerson_Number": {
-              "@type": "string",
-              "#text": "１２３４５６７"
-            },
-            "HealthInsuredPerson_Assistance": {
-              "@type": "string",
-              "#text": "3"
-            },
-            "RelationToInsuredPerson": {
-              "@type": "string",
-              "#text": "1"
-            },
-            "Certificate_StartDate": {
-              "@type": "string",
-              "#text": "2010-05-01"
-            },
-            "Certificate_ExpiredDate": {
-              "@type": "string",
-              "#text": "9999-12-31"
-            }
-          },
-          {
-            "@type": "record",
-            "Insurance_Combination_Number": {
-              "@type": "string",
-              "#text": "0002"
-            },
-            "InsuranceProvider_Class": {
-              "@type": "string",
-              "#text": "060"
-            },
-            "InsuranceProvider_Number": {
-              "@type": "string",
-              "#text": "138057"
-            },
-            "InsuranceProvider_WholeName": {
-              "@type": "string",
-              "#text": "国保"
-            },
-            "HealthInsuredPerson_Symbol": {
-              "@type": "string",
-              "#text": "０１"
-            },
-            "HealthInsuredPerson_Number": {
-              "@type": "string",
-              "#text": "１２３４５６７"
-            },
-            "HealthInsuredPerson_Assistance": {
-              "@type": "string",
-              "#text": "3"
-            },
-            "RelationToInsuredPerson": {
-              "@type": "string",
-              "#text": "1"
-            },
-            "Certificate_StartDate": {
-              "@type": "string",
-              "#text": "2010-05-01"
-            },
-            "Certificate_ExpiredDate": {
-              "@type": "string",
-              "#text": "9999-12-31"
-            },
-            "PublicInsurance_Information": {
-              "@type": "array",
-              "PublicInsurance_Information_child": {
-                "@type": "record",
-                "PublicInsurance_Class": {
-                  "@type": "string",
-                  "#text": "010"
-                },
-                "PublicInsurance_Name": {
-                  "@type": "string",
-                  "#text": "感３７の２"
-                },
-                "PublicInsurer_Number": {
-                  "@type": "string",
-                  "#text": "10131142"
-                },
-                "PublicInsuredPerson_Number": {
-                  "@type": "string",
-                  "#text": "1234566"
-                },
-                "Rate_Admission": {
-                  "@type": "string",
-                  "#text": "0.05"
-                },
-                "Money_Admission": {
-                  "@type": "string",
-                  "#text": "0"
-                },
-                "Rate_Outpatient": {
-                  "@type": "string",
-                  "#text": "0.05"
-                },
-                "Money_Outpatient": {
-                  "@type": "string",
-                  "#text": "0"
-                },
-                "Certificate_IssuedDate": {
-                  "@type": "string",
-                  "#text": "2010-05-01"
-                },
-                "Certificate_ExpiredDate": {
-                  "@type": "string",
-                  "#text": "9999-12-31"
-                }
-              }
-            }
-          }
-        ]
-      },
-      "Payment_Information": {
-        "@type": "record",
-        "Reduction_Reason": {
-          "@type": "string",
-          "#text": "01"
-        },
-        "Reduction_Reason_Name": {
-          "@type": "string",
-          "#text": "低所得"
-        },
-        "Discount": {
-          "@type": "string",
-          "#text": "01"
-        },
-        "Discount_Name": {
-          "@type": "string",
-          "#text": "10(%)"
-        },
-        "Ic_Code": {
-          "@type": "string",
-          "#text": "02"
-        },
-        "Ic_Code_Name": {
-          "@type": "string",
-          "#text": "振込"
-        }
+  "Information_Date": "2020-09-11",
+  "Information_Time": "10:58:41",
+  "Api_Result": "00",
+  "Api_Result_Message": "処理終了",
+  "Reskey": "Patient Info",
+  "Patient_Information": {
+    "Patient_ID": "00011",
+    "WholeName": "事例\u3000十一",
+    "WholeName_inKana": "ジレイ\u3000ジュウイチ",
+    "BirthDate": "1933-08-08",
+    "Sex": "1",
+    "HouseHolder_WholeName": "事例\u3000十一",
+    "TestPatient_Flag": "0",
+    "Reduction_Reason": "00",
+    "Reduction_Reason_Name": "該当なし",
+    "Discount": "00",
+    "Discount_Name": "該当なし",
+    "Condition1": "00",
+    "Condition1_Name": "該当なし",
+    "Condition2": "00",
+    "Condition2_Name": "該当なし",
+    "Condition3": "00",
+    "Condition3_Name": "該当なし",
+    "Ic_Code": "01",
+    "Ic_Code_Name": "現金",
+    "Community_Cid_Agree": "False",
+    "FirstVisit_Date": "2010-04-12",
+    "LastVisit_Date": "2020-09-09",
+    "HealthInsurance_Information": [
+      {
+        "Insurance_Combination_Number": "0002",
+        "InsuranceCombination_Rate_Admission": "0.10",
+        "InsuranceCombination_Rate_Outpatient": "0.10",
+        "Insurance_Nondisplay": "N",
+        "InsuranceProvider_Class": "039",
+        "InsuranceProvider_Number": "39131123",
+        "InsuranceProvider_WholeName": "後期高齢者",
+        "HealthInsuredPerson_Number": "０００５５５５５",
+        "HealthInsuredPerson_Assistance": "1",
+        "HealthInsuredPerson_Assistance_Name": "１割",
+        "RelationToInsuredPerson": "1",
+        "HealthInsuredPerson_WholeName": "事例\u3000十一",
+        "Certificate_StartDate": "2020-09-09",
+        "Certificate_ExpiredDate": "9999-12-31",
+        "Insurance_CheckDate": "2020-09-09"
       }
-    }
+    ]
   }
 }

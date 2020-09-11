@@ -8,7 +8,7 @@ import orcalib.orca_default as orca
 from orcalib.orca_formatter import res_to_json
 
 
-def info(patient_id):
+def patient_info(patient_id):
     ordered_dict_data = xmltodict.parse(
         requests.get(
             url=orca.default_url + orca.patient_basic_info + "id=" + patient_id,
