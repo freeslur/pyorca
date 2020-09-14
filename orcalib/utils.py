@@ -4,6 +4,18 @@ from xml.dom.minidom import parseString
 import dicttoxml
 
 
+def check_new(create_date, update_date, update_time):
+    return 0
+
+
+def json_to_post(data):
+    result = ""
+    for key in data.keys():
+        result += "<" + key + " type='string'>" + data[key] + "</" + key + ">"
+    print(result)
+    return result
+
+
 def res_to_json(data):
 
     if type(data) is list:
@@ -34,14 +46,18 @@ def res_to_json(data):
 
 
 def req_to_xml(req_data):
-
-    def item_del_func(x): return x+"_child"
+    def item_del_func(x):
+        return x + "_child"
 
     data = {"patientmodreq": json.loads(req_data)}
 
-    xml = dicttoxml(data, root=True, custom_root="data",
-                    attr_type=True, item_func=item_del_func)
+    xml = dicttoxml(
+        data, root=True, custom_root="data", attr_type=True, item_func=item_del_func
+    )
     string_xml = parseString(xml).toxml()
-    result_xml = string_xml.replace('type="str"', 'type="string"').replace(
-        'type="dict"', 'type="record"').replace('type="list"', 'type="array"')
+    result_xml = (
+        string_xml.replace('type="str"', 'type="string"')
+        .replace('type="dict"', 'type="record"')
+        .replace('type="list"', 'type="array"')
+    )
     return result_xml
