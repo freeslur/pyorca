@@ -1,4 +1,5 @@
 import json
+from datetime import date
 from xml.dom.minidom import parseString
 
 import dicttoxml
@@ -8,11 +9,21 @@ def check_new(create_date, update_date, update_time):
     return 0
 
 
+def calc_age(birth_date):
+    ymd = birth_date.split("-")
+    today = date.today()
+    age = (
+        today.year
+        - int(ymd[0])
+        - ((today.month, today.day) < (int(ymd[1]), int(ymd[2])))
+    )
+    return str(age) + "才"
+
+
 def json_to_post(data):
     result = ""
     for key in data.keys():
         result += "<" + key + " type='string'>" + data[key] + "</" + key + ">"
-    print(result)
     return result
 
 

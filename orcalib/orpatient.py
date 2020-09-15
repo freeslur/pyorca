@@ -28,14 +28,58 @@ class ORPatient:
         patient_data = self.getInfo(patient_id=patient_id)
         return patient_data["Patient_Information"]["LastVisit_Date"]
 
-    def getNewbies(self, params):
+    def get_memo(self, patient_id):
+        print("go memo =================================")
+        post_data = orca.post_param_default(
+            "patientlst7req", json_to_post({"Patient_ID": "00001", "Memo_Class": "2"})
+        )
+        result_list = []
+        error = ""
+
+        res_data_newbie = xmltodict.parse(
+            requests.post(
+                url=orca.default_url + orca.patient_memo,
+                data=post_data.encode("utf-8"),
+                headers=orca.post_headers,
+                auth=orca.auth,
+            ).content
+        )
+        json_data = res_to_json(
+            dict(json.loads(json.dumps(res_data_newbie)))["xmlio2"]["patientlst7res"]
+        )
+        print("=========json=========\n", json_data)
+        if json_data["Api_Result"] == "00":
+            print(len(json_data))
+            # for data in json_data["Patient_Information"]:
+            #     newbie_data = {
+            #         "Patient_ID": data["Patient_ID"],
+            #         "WholeName_inKana": data["WholeName_inKana"],
+            #         "WholeName": data["WholeName"],
+            #         "BirthDate": data["BirthDate"],
+            #         "Sex": "男" if data["Sex"] == "1" else "女",
+            #         "CreateDate": data["CreateDate"],
+            #         "UpdateDate": data["UpdateDate"],
+            #         "UpdateTime": data["UpdateTime"],
+            #         "IsNew": check_new(
+            #             data["CreateDate"], data["UpdateDate"], data["UpdateTime"]
+            #         ),
+            #     }
+            #     result_list.append(newbie_data)
+        else:
+            error = json_data["Api_Result"] + " : " + json_data["Api_Result_Message"]
+
+        result = {"error": error, "data": result_list}
+        print(result)
+        return "result"
+
+    def getNewbies(params):
         post_data = orca.post_param_default("patientlst1req", json_to_post(params))
         result_list = []
         error = ""
 
         res_data_newbie = xmltodict.parse(
             requests.post(
-                url=orca.default_url + orca.patinet_newbie,
+                url=orca.default_url + orca.patient_newbie,
                 data=post_data.encode("utf-8"),
                 headers=orca.post_headers,
                 auth=orca.auth,

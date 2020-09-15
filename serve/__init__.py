@@ -15,7 +15,7 @@ def create_app():
     app.config.from_object(Config)
 
     db.init_app(app)
-    migrate = Migrate(app, db)
+    Migrate(app, db)
 
     app.register_blueprint(acceptance_router, url_prefix="/api")
     app.register_blueprint(patient_router, url_prefix="/api")

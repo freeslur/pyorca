@@ -4,7 +4,6 @@ from serve.database import db, ma
 
 class Patient(db.Model):
     __tablename__ = "patients"
-
     Patient_ID = db.Column(db.String(256), primary_key=True, nullable=False)
     WholeName = db.Column(db.String(256), index=True, nullable=True)
     WholeName_inKana = db.Column(db.String(256), index=True, nullable=True)
