@@ -1,4 +1,3 @@
-from orcalib.orpatient import ORPatient
 from serve.database import db, ma
 
 
@@ -10,7 +9,7 @@ class Patient(db.Model):
     BirthDate = db.Column(db.String(256), nullable=True)
     Sex = db.Column(db.String(256), nullable=True)
     LastVisit_Date = db.Column(db.String(256), nullable=True)
-    Memo = db.Column(db.String(256), nullable=True)
+    Patient_Memo = db.Column(db.String(256), nullable=True)
 
     def __repr__(self):
         return "<Patient %r>" % self.WholeName
@@ -23,7 +22,7 @@ class Patient(db.Model):
         BirthDate,
         Sex,
         LastVisit_Date,
-        Memo="",
+        Patient_Memo="",
     ):
         self.Patient_ID = Patient_ID
         self.WholeName = WholeName
@@ -31,9 +30,9 @@ class Patient(db.Model):
         self.BirthDate = BirthDate
         self.Sex = Sex
         self.LastVisit_Date = LastVisit_Date
-        self.Memo = Memo
+        self.Patient_Memo = Patient_Memo
 
-    def getPatientList():
+    def get_patient_list():
         patient_list = db.session.query(Patient).all()
 
         if patient_list is None:
@@ -41,13 +40,13 @@ class Patient(db.Model):
         else:
             return patient_list
 
-    def isPatient(self, patient_id):
+    def is_patient(self, patient_id):
         patient_list = (
             db.session.query(Patient).filter(Patient.Patient_ID == patient_id).all()
         )
         return len(patient_list)
 
-    def registPatient(patient):
+    def regist_patient(patient):
         record = Patient(
             Patient_ID=patient["Patient_ID"],
             WholeName=patient["WholeName"],
@@ -55,20 +54,15 @@ class Patient(db.Model):
             BirthDate=patient["BirthDate"],
             Sex=patient["Sex"],
             LastVisit_Date=patient["LastVisit_Date"],
-            Memo=patient["Memo"],
+            Patient_Memo=patient["Patient_Memo"],
         )
 
         db.session.add(record)
         db.session.commit()
         return patient
 
-    def getNewbie():
-        orp = ORPatient()
-
-        data = orp.getNewbies(
-            {"Base_StartDate": "2020-09-01", "Base_EndDate": "2020-09-14"}
-        )
-        return data
+    def clear():
+        pass
 
 
 class PatientSchema(ma.SQLAlchemyAutoSchema):
@@ -81,5 +75,5 @@ class PatientSchema(ma.SQLAlchemyAutoSchema):
             "BirthDate",
             "Sex",
             "LastVisit_Date",
-            "Memo",
+            "Patient_Memo",
         )

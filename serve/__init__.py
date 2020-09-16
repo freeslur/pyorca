@@ -4,8 +4,8 @@ from flask_migrate import Migrate
 
 from config import Config
 from serve.database import db
-from serve.views.acceptance import acceptance_router
-from serve.views.patient import patient_router
+from serve.views.v_acceptance import acceptance_router
+from serve.views.v_patient import patient_router
 
 
 def create_app():

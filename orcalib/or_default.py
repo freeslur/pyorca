@@ -9,6 +9,7 @@ update_patient = "/orca12/patientmodv2?class=02"
 delete_patient = "/orca12/patientmodv2?class=03"
 acceptance_all_list = "/api01rv2/acceptlstv2?class=03"
 acceptance_cancel = "/orca11/acceptmodv2"
+regist_receipt = "/api21/medicalmodv2?class=01"
 post_headers = {"Content-Type": "application/xml"}
 auth = ("trial", "")
 # auth = ("ormaster", "ormaster")
@@ -18,7 +19,7 @@ def acceptance_info(class_num):
     return "/api01rv2/acceptlstv2?class=0" + str(class_num)
 
 
-def post_param_default(api_key, param_string):
+def post_param_wrapper(api_key, param_string):
     return (
         "<data><"
         + api_key

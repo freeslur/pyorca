@@ -1,50 +1,58 @@
 {
-  "Information_Date": "2020-09-11",
-  "Information_Time": "10:58:41",
+  "Information_Date": "2020-09-16",
+  "Information_Time": "17:43:44",
   "Api_Result": "00",
   "Api_Result_Message": "処理終了",
   "Reskey": "Patient Info",
-  "Patient_Information": {
-    "Patient_ID": "00011",
-    "WholeName": "事例\u3000十一",
-    "WholeName_inKana": "ジレイ\u3000ジュウイチ",
-    "BirthDate": "1933-08-08",
-    "Sex": "1",
-    "HouseHolder_WholeName": "事例\u3000十一",
-    "TestPatient_Flag": "0",
-    "Reduction_Reason": "00",
-    "Reduction_Reason_Name": "該当なし",
-    "Discount": "00",
-    "Discount_Name": "該当なし",
-    "Condition1": "00",
-    "Condition1_Name": "該当なし",
-    "Condition2": "00",
-    "Condition2_Name": "該当なし",
-    "Condition3": "00",
-    "Condition3_Name": "該当なし",
-    "Ic_Code": "01",
-    "Ic_Code_Name": "現金",
-    "Community_Cid_Agree": "False",
-    "FirstVisit_Date": "2010-04-12",
-    "LastVisit_Date": "2020-09-09",
-    "HealthInsurance_Information": [
-      {
+  "Acceptance_Date": "2020-09-16",
+  "Acceptlst_Information": [
+    {
+      "Acceptance_Time": "02:36:55",
+      "Acceptance_Id": "00009",
+      "Department_Code": "10",
+      "Department_WholeName": "外科",
+      "Physician_Code": "10006",
+      "Physician_WholeName": "外科\u3000五郎",
+      "Medical_Information": "01",
+      "Account_Time": "14:24:00",
+      "Patient_Information": {
+        "Patient_ID": "00010",
+        "WholeName": "事例\u3000十",
+        "WholeName_inKana": "ジレイ\u3000ジュウ",
+        "BirthDate": "1947-10-12",
+        "Sex": "2"
+      },
+      "HealthInsurance_Information": {
         "Insurance_Combination_Number": "0002",
-        "InsuranceCombination_Rate_Admission": "0.10",
-        "InsuranceCombination_Rate_Outpatient": "0.10",
         "Insurance_Nondisplay": "N",
-        "InsuranceProvider_Class": "039",
-        "InsuranceProvider_Number": "39131123",
-        "InsuranceProvider_WholeName": "後期高齢者",
-        "HealthInsuredPerson_Number": "０００５５５５５",
-        "HealthInsuredPerson_Assistance": "1",
-        "HealthInsuredPerson_Assistance_Name": "１割",
+        "InsuranceProvider_Class": "006",
+        "InsuranceProvider_Number": "06130058",
+        "InsuranceProvider_WholeName": "組合",
+        "HealthInsuredPerson_Symbol": "２１５６３４",
+        "HealthInsuredPerson_Number": "６３１５",
+        "HealthInsuredPerson_Assistance": "8",
         "RelationToInsuredPerson": "1",
-        "HealthInsuredPerson_WholeName": "事例\u3000十一",
-        "Certificate_StartDate": "2020-09-09",
-        "Certificate_ExpiredDate": "9999-12-31",
-        "Insurance_CheckDate": "2020-09-09"
+        "HealthInsuredPerson_WholeName": "事例\u3000十",
+        "Certificate_StartDate": "2020-09-14",
+        "Certificate_ExpiredDate": "9999-12-31"
       }
-    ]
-  }
+    },
+    {
+      "Acceptance_Time": "02:30:11",
+      "Acceptance_Id": "00008",
+      "Department_Code": "01",
+      "Department_WholeName": "内科",
+      "Physician_Code": "10001",
+      "Physician_WholeName": "内科\u3000太郎",
+      "Medical_Information": "01",
+      "Account_Time": "16:43:00",
+      "Patient_Information": {
+        "Patient_ID": "00008",
+        "WholeName": "事例\u3000八",
+        "WholeName_inKana": "ジレイ\u3000ハチ",
+        "BirthDate": "1969-07-03",
+        "Sex": "2"
+      }
+    }
+  ]
 }
