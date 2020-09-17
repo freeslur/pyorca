@@ -1,96 +1,103 @@
+<?xml version="1.0" ?>
 <data>
-  <medicalsetreq type="record">
-    <Request_Number type="string">***01</Request_Number>
-    <Base_Date type="string"/>
-    <Set_Code type="string">***PAI004</Set_Code>
-    <Set_Code_Name type="string">***NewOnly ＡＰＩセット３</Set_Code_Name>
-    <Start_Date type="string">2013-04-01</Start_Date>
-    <Ende_Date type="string">9999-12-31</Ende_Date>
-    <InOut type="string"/>
-    <!-- ========================================================== -->
-    <!--                    診療データ                              -->
-    <!-- ========================================================== -->
-    <Medical_Information type="record">
-      <Medical_Info type="array">
-        <!-- ========================================================== -->
-        <Medical_Info_child type="record">
-          <Medical_Class type="string">***210</Medical_Class>
-          <Medical_Class_Name type="string">内服</Medical_Class_Name>
-          <Medical_Class_Number type="string">3</Medical_Class_Number>
-          <Medication_Info type="array">
-            <Medication_Info_child type="record">
-              <Medication_Code type="string">612320391</Medication_Code>
-              <Medication_Name type="string">イサロン顆粒２５％</Medication_Name>
-              <Medication_Number type="string">0.5</Medication_Number>
-            </Medication_Info_child>
-            <Medication_Info_child type="record">
-              <Medication_Code type="string">611170791</Medication_Code>
-              <Medication_Name type="string">イミドール糖衣錠</Medication_Name>
+  <medicalreq type="record">
+    <Patient_ID type="string">00008</Patient_ID>
+    <Perform_Date type="string">2020-09-17</Perform_Date>
+    <Perform_Time type="string">11:29:59</Perform_Time>
+    <Diagnosis_Information type="record">
+      <Department_Code type="string">01</Department_Code>
+      <Physician_Code type="string">10001</Physician_Code>
+      <HealthInsurance_Information type="record">
+        <Insurance_Combination_Number type="string">0004</Insurance_Combination_Number>
+        <Insurance_Nondisplay type="string">N</Insurance_Nondisplay>
+        <InsuranceProvider_Class type="string">973</InsuranceProvider_Class>
+        <InsuranceProvider_WholeName type="string">自賠責保険</InsuranceProvider_WholeName>
+        <HealthInsuredPerson_Symbol type="string">自賠責保険</HealthInsuredPerson_Symbol>
+        <HealthInsuredPerson_Number type="string">右足関節、右手</HealthInsuredPerson_Number>
+        <Certificate_StartDate type="string">2016-04-12</Certificate_StartDate>
+        <Certificate_ExpiredDate type="string">9999-12-31</Certificate_ExpiredDate>
+      </HealthInsurance_Information>
+      <Medical_Information type="array">
+        <Medical_Information_child type="record">
+          <Medical_Class type="string">120</Medical_Class>
+          <Medical_Class_Name type="string">再診</Medical_Class_Name>
+          <Medical_Class_Number type="string">1</Medical_Class_Number>
+          <Medication_info type="array">
+            <Medication_info_child type="record">
+              <Medication_Code type="string">112007410</Medication_Code>
+              <Medication_Name type="string">再診</Medication_Name>
+              <Medication_Number type="string">1</Medication_Number>
+              <Medication_Generic_Flg type="string"/>
+            </Medication_info_child>
+          </Medication_info>
+        </Medical_Information_child>
+        <Medical_Information_child type="record">
+          <Medical_Class type="string">210</Medical_Class>
+          <Medical_Class_Name type="string">内服
+薬剤</Medical_Class_Name>
+          <Medical_Class_Number type="string">1</Medical_Class_Number>
+          <Medication_info type="array">
+            <Medication_info_child type="record">
+              <Medication_Code type="string">620001402</Medication_Code>
+              <Medication_Name type="string">グリセリン</Medication_Name>
               <Medication_Number type="string">2</Medication_Number>
-            </Medication_Info_child>
-            <Medication_Info_child type="record">
-              <Medication_Code type="string">611120080</Medication_Code>
-              <Medication_Name type="string">ユーロジン１ｍｇ錠</Medication_Name>
-              <Medication_Number type="string">1.6</Medication_Number>
-            </Medication_Info_child>
-            <Medication_Info_child type="record">
-              <Medication_Code type="string">001000106</Medication_Code>
-              <Medication_Name type="string">１日１回朝食後に</Medication_Name>
-              <Medication_Number type="string"/>
-            </Medication_Info_child>
-          </Medication_Info>
-        </Medical_Info_child>
-        <!-- ========================================================== -->
-        <Medical_Info_child type="record">
-          <Medical_Class type="string">600</Medical_Class>
-          <Medical_Class_Name type="string">検査</Medical_Class_Name>
+              <Medication_Generic_Flg type="string">yes</Medication_Generic_Flg>
+            </Medication_info_child>
+          </Medication_info>
+        </Medical_Information_child>
+        <Medical_Information_child type="record">
+          <Medical_Class type="string">500</Medical_Class>
+          <Medical_Class_Name type="string">手術</Medical_Class_Name>
           <Medical_Class_Number type="string">1</Medical_Class_Number>
-          <Medication_Info type="array">
-            <Medication_Info_child type="record">
-              <Medication_Code type="string">160023410</Medication_Code>
-              <Medication_Name type="string">ＨＤＬ−コレステロール</Medication_Name>
-              <Medication_Number type="string"/>
-            </Medication_Info_child>
-            <Medication_Info_child type="record">
-              <Medication_Code type="string">160019310</Medication_Code>
-              <Medication_Name type="string">ＵＡ</Medication_Name>
-              <Medication_Number type="string"/>
-            </Medication_Info_child>
-            <Medication_Info_child type="record">
-              <Medication_Code type="string">160020910</Medication_Code>
-              <Medication_Name type="string">ＴＧ</Medication_Name>
-              <Medication_Number type="string"> </Medication_Number>
-            </Medication_Info_child>
-            <Medication_Info_child type="record">
-              <Medication_Code type="string">160019210</Medication_Code>
-              <Medication_Name type="string">クレアチニン</Medication_Name>
-              <Medication_Number type="string"> </Medication_Number>
-            </Medication_Info_child>
-          </Medication_Info>
-        </Medical_Info_child>
-        <!-- ========================================================== -->
-        <!-- ========================================================== -->
-        <Medical_Info_child type="record">
-          <Medical_Class type="string">960</Medical_Class>
-          <Medical_Class_Name type="string">保険外（消費税あり）</Medical_Class_Name>
-          <Medical_Class_Number type="string">1</Medical_Class_Number>
-          <Medication_Info type="array">
-            <Medication_Info_child type="record">
-              <Medication_Code type="string">096000002</Medication_Code>
-              <Medication_Name type="string">自費その２</Medication_Name>
-              <Medication_Number type="string"/>
-              <Medication_Money type="string">12945</Medication_Money>
-            </Medication_Info_child>
-            <Medication_Info_child type="record">
-              <Medication_Code type="string">095930000</Medication_Code>
-              <Medication_Name type="string">自賠責器材Ａ</Medication_Name>
-              <Medication_Number type="string"/>
-              <Medication_Money type="string">10</Medication_Money>
-            </Medication_Info_child>
-          </Medication_Info>
-        </Medical_Info_child>
-        <!-- ========================================================== -->
-      </Medical_Info>
-    </Medical_Information>
-  </medicalsetreq>
+          <Medication_info type="array">
+            <Medication_info_child type="record">
+              <Medication_Code type="string">150003110</Medication_Code>
+              <Medication_Name type="string">皮膚、皮下腫瘍摘出術（露出部）（長径２ｃ
+ｍ未満）</Medication_Name>
+              <Medication_Number type="string">1</Medication_Number>
+              <Medication_Generic_Flg type="string"/>
+            </Medication_info_child>
+            <Medication_info_child type="record">
+              <Medication_Code type="string">641210099</Medication_Code>
+              <Medication_Name type="string">キシロカイン注射液１％</Medication_Name>
+              <Medication_Number type="string">3</Medication_Number>
+              <Medication_Generic_Flg type="string"/>
+            </Medication_info_child>
+            <Medication_info_child type="record">
+              <Medication_Code type="string">840000042</Medication_Code>
+              <Medication_Name type="string">手術○日</Medication_Name>
+              <Medication_Number type="string">15</Medication_Number>
+              <Medication_Generic_Flg type="string"/>
+            </Medication_info_child>
+          </Medication_info>
+        </Medical_Information_child>
+      </Medical_Information>
+      <Disease_Information type="array">
+        <Disease_Information_child type="record">
+          <Disease_Code type="string">8830052</Disease_Code>
+          <Disease_Name type="string">ＡＣバイパス術後機械的合併症</Disease_Name>
+          <Disease_SuspectedFlag type="string">S</Disease_SuspectedFlag>
+          <Disease_StartDate type="string">2020-08-23</Disease_StartDate>
+          <Disease_EndDate type="string">2020-08-24</Disease_EndDate>
+          <Disease_OutCome type="string">D</Disease_OutCome>
+        </Disease_Information_child>
+        <Disease_Information_child type="record">
+          <Disease_InOut type="string">0</Disease_InOut>
+          <Disease_Single type="array">
+            <Disease_Single_child type="record">
+              <Disease_Single_Code type="string">830417</Disease_Single_Code>
+              <Disease_Single_Name type="string"/>
+            </Disease_Single_child>
+            <Disease_Single_child type="record">
+              <Disease_Single_Code type="string">ZZZ8002</Disease_Single_Code>
+              <Disease_Single_Name type="string">の疑い</Disease_Single_Name>
+            </Disease_Single_child>
+          </Disease_Single>
+          <Disease_StartDate type="string">2020-07-23</Disease_StartDate>
+          <Disease_EndDate type="string">2020-07-24</Disease_EndDate>
+          <Disease_OutCome type="string">D</Disease_OutCome>
+        </Disease_Information_child>
+      </Disease_Information>
+    </Diagnosis_Information>
+  </medicalreq>
 </data>

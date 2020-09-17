@@ -19,17 +19,5 @@ def acceptance_info(class_num):
     return "/api01rv2/acceptlstv2?class=0" + str(class_num)
 
 
-def post_param_wrapper(api_key, param_string):
-    return (
-        "<data><"
-        + api_key
-        + " type='record'>"
-        + param_string
-        + "</"
-        + api_key
-        + "></data>"
-    )
-
-
 def get_param_default(params):
     return params

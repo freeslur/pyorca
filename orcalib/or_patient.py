@@ -16,7 +16,12 @@ class ORPatient:
 
     def get_prev_date(self, patient_id):
         patient_data = self.get_info(patient_id=patient_id)
-        return patient_data["Patient_Information"]["LastVisit_Date"]
+        result = (
+            patient_data["Patient_Information"]["LastVisit_Date"]
+            if "LastVisit_Date" in patient_data["Patient_Information"].keys()
+            else "初診"
+        )
+        return result
 
     def checks(self):
         return ""

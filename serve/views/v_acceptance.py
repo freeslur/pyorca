@@ -1,3 +1,5 @@
+import json
+
 from flask import Blueprint, jsonify, make_response, request
 
 from orcalib.or_utils import calc_age
@@ -60,6 +62,8 @@ def get_acceptance_cancel():
 @acceptance_router.route("acceptances/send", methods=["POST"])
 def get_receipt_data_f():
     data = request.get_json()
+    data_big = json.loads(data["default"]["BigData"])
+    data["default"] = data_big
     Acceptance.get_receipt_data(data)
     # Acceptance.check(selected_date=data["acc_date"])
     # acceptances = Acceptance.getList(selected_date=data["acc_date"])

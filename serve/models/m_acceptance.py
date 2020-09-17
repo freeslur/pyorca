@@ -99,8 +99,8 @@ class Acceptance(db.Model):
         acceptance_date = selected_date
         patient_id = patient_id
         acceptance_time = acceptance_time
-        result = ORAcceptance.cancel(
-            acc_date=acceptance_date,
+        or_acc = ORAcceptance(selected_date=acceptance_date)
+        result = or_acc.cancel(
             acc_time=acceptance_time,
             acc_id=acceptance_id,
             pati_id=patient_id,
@@ -121,9 +121,7 @@ class Acceptance(db.Model):
         return result
 
     def get_receipt_data(data):
-        print("==============receiveReceipData==================")
-        print(data)
-        print("==============receiveReceipData==================")
+
         result = ORAcceptance.send_receipt(data)
         return result
 

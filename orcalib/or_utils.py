@@ -2,9 +2,9 @@ import json
 from datetime import date
 from xml.dom.minidom import parseString
 
-import dicttoxml
 import requests
 import xmltodict
+from dicttoxml import dicttoxml
 
 import orcalib.or_default as orca
 
@@ -52,13 +52,6 @@ def calc_age(birth_date):
     return str(age) + "才"
 
 
-def json_to_post(data):
-    result = ""
-    for key in data.keys():
-        result += "<" + key + " type='string'>" + data[key] + "</" + key + ">"
-    return result
-
-
 def res_to_json(data):
 
     if type(data) is list:
@@ -88,12 +81,11 @@ def res_to_json(data):
     return data
 
 
-def req_to_xml(req_data):
+def req_to_xml(req_key, req_data):
     def item_del_func(x):
         return x + "_child"
 
-    data = {"patientmodreq": json.loads(req_data)}
-
+    data = {req_key: req_data}
     xml = dicttoxml(
         data, root=True, custom_root="data", attr_type=True, item_func=item_del_func
     )
