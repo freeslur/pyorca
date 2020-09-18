@@ -1,79 +1,116 @@
-{
-  "Patient_ID": "00036",
-  "WholeName": "日医　太郎",
-  "WholeName_inKana": "ニチイ　タロウ",
-  "BirthDate": "1970-01-01",
-  "Sex": "1",
-  "HouseHolder_WholeName": "日医　太郎",
-  "Relationship": "本人",
-  "Occupation": "会社員",
-  "CellularNumber": "09011112222",
-  "FaxNumber": "03-0011-2233",
-  "EmailAddress": "test@tt.dot.jp",
-  "Home_Address_Information": {
-    "Address_ZipCode": "1130021",
-    "WholeAddress1": "東京都文京区本駒込",
-    "WholeAddress2": "６−１６−３",
-    "PhoneNumber1": "03-3333-2222",
-    "PhoneNumber2": "03-3333-1133"
-  },
-  "WorkPlace_Information": {
-    "WholeName": "てすと　株式会社",
-    "Address_ZipCode": "1130022",
-    "WholeAddress1": "東京都文京区本駒込",
-    "WholeAddress2": "５−１２−１１",
-    "PhoneNumber": "03-3333-2211"
-  },
-  "Contraindication1": "状態",
-  "Allergy1": "アレルギ",
-  "Infection1": "感染症",
-  "Comment1": "コメント",
-  "HealthInsurance_Information": [
-    {
-      "Insurance_Combination_Number": "0001",
-      "InsuranceProvider_Class": "060",
-      "InsuranceProvider_Number": "138057",
-      "InsuranceProvider_WholeName": "国保",
-      "HealthInsuredPerson_Symbol": "０１",
-      "HealthInsuredPerson_Number": "１２３４５６７",
-      "HealthInsuredPerson_Assistance": "3",
-      "RelationToInsuredPerson": "1",
-      "Certificate_StartDate": "2010-05-01",
-      "Certificate_ExpiredDate": "9999-12-31"
+[
+  {
+    "Acceptance_ID": "00004",
+    "Acceptance_Date": "2020-09-17",
+    "Acceptance_Time": "10:29:59",
+    "Status": "2",
+    "Patient_Information": {
+      "Patient_ID": "00008",
+      "WholeName": "事例\u3000八",
+      "WholeName_inKana": "ジレイ\u3000ハチ",
+      "BirthDate": "1969-07-03",
+      "Sex": "2"
     },
-    {
-      "Insurance_Combination_Number": "0002",
-      "InsuranceProvider_Class": "060",
-      "InsuranceProvider_Number": "138057",
-      "InsuranceProvider_WholeName": "国保",
-      "HealthInsuredPerson_Symbol": "０１",
-      "HealthInsuredPerson_Number": "１２３４５６７",
-      "HealthInsuredPerson_Assistance": "3",
-      "RelationToInsuredPerson": "1",
-      "Certificate_StartDate": "2010-05-01",
-      "Certificate_ExpiredDate": "9999-12-31",
-      "PublicInsurance_Information": [
-        {
-          "PublicInsurance_Class": "010",
-          "PublicInsurance_Name": "感３７の２",
-          "PublicInsurer_Number": "10131142",
-          "PublicInsuredPerson_Number": "1234566",
-          "Rate_Admission": "0.05",
-          "Money_Admission": "0",
-          "Rate_Outpatient": "0.05",
-          "Money_Outpatient": "0",
-          "Certificate_IssuedDate": "2010-05-01",
-          "Certificate_ExpiredDate": "9999-12-31"
-        }
-      ]
+    "InsuranceProvider_WholeName": "自賠責保険",
+    "Department_WholeName": "内科",
+    "Physician_WholeName": "内科\u3000太郎",
+    "Patient_Memo": "",
+    "Acceptance_Memo": "",
+    "BigData": {
+      "Acceptance_Time": "10:29:59",
+      "Acceptance_Id": "00004",
+      "Department_Code": "01",
+      "Department_WholeName": "内科",
+      "Physician_Code": "10001",
+      "Physician_WholeName": "内科\u3000太郎",
+      "Medical_Information": "01",
+      "Claim_Infometion": "0",
+      "Account_Time": "15:07:00",
+      "Patient_Information": {
+        "Patient_ID": "00008",
+        "WholeName": "事例\u3000八",
+        "WholeName_inKana": "ジレイ\u3000ハチ",
+        "BirthDate": "1969-07-03",
+        "Sex": "2"
+      },
+      "HealthInsurance_Information": {
+        "Insurance_Combination_Number": "0004",
+        "Insurance_Nondisplay": "N",
+        "InsuranceProvider_Class": "973",
+        "InsuranceProvider_WholeName": "自賠責保険",
+        "HealthInsuredPerson_Symbol": "自賠責保険",
+        "HealthInsuredPerson_Number": "右足関節、右手",
+        "Certificate_StartDate": "2016-04-12",
+        "Certificate_ExpiredDate": "9999-12-31"
+      }
     }
-  ],
-  "Payment_Information": {
-    "Reduction_Reason": "01",
-    "Reduction_Reason_Name": "低所得",
-    "Discount": "01",
-    "Discount_Name": "10(%)",
-    "Ic_Code": "02",
-    "Ic_Code_Name": "振込"
+  },
+  {
+    "Acceptance_ID": "00006",
+    "Acceptance_Date": "2020-09-17",
+    "Acceptance_Time": "15:16:18",
+    "Status": "0",
+    "Patient_Information": {
+      "Patient_ID": "00009",
+      "WholeName": "事例\u3000九",
+      "WholeName_inKana": "ジレイ\u3000キュウ",
+      "BirthDate": "1978-05-23",
+      "Sex": "1"
+    },
+    "InsuranceProvider_WholeName": "労災保険",
+    "Department_WholeName": "内科",
+    "Physician_WholeName": "内科\u3000太郎",
+    "Patient_Memo": "",
+    "Acceptance_Memo": "",
+    "BigData": {
+      "Acceptance_Time": "15:16:18",
+      "Acceptance_Id": "00006",
+      "Department_Code": "01",
+      "Department_WholeName": "内科",
+      "Physician_Code": "10001",
+      "Physician_WholeName": "内科\u3000太郎",
+      "Medical_Information": "01",
+      "Patient_Information": {
+        "Patient_ID": "00009",
+        "WholeName": "事例\u3000九",
+        "WholeName_inKana": "ジレイ\u3000キュウ",
+        "BirthDate": "1978-05-23",
+        "Sex": "1"
+      },
+      "HealthInsurance_Information": {
+        "Insurance_Combination_Number": "0002",
+        "Insurance_Nondisplay": "N",
+        "InsuranceProvider_Class": "971",
+        "InsuranceProvider_WholeName": "労災保険",
+        "HealthInsuredPerson_Symbol": "短期給付",
+        "HealthInsuredPerson_Number": "頭部、頚椎",
+        "Certificate_StartDate": "2016-04-16",
+        "Certificate_ExpiredDate": "9999-12-31"
+      },
+      "Display_Order": { "Display_Order_Number": "9999" }
+    }
+  },
+  {
+    "Acceptance_ID": "00007",
+    "Acceptance_Date": "2020-09-17",
+    "Acceptance_Time": "14:31:31",
+    "Status": "0",
+    "Patient_Information": { "WholeName": "青山真二" },
+    "InsuranceProvider_WholeName": "",
+    "Department_WholeName": "内科",
+    "Physician_WholeName": "内科\u3000太郎",
+    "Patient_Memo": "",
+    "Acceptance_Memo": "",
+    "BigData": {
+      "Acceptance_Time": "14:31:31",
+      "Acceptance_Id": "00007",
+      "Department_Code": "01",
+      "Department_WholeName": "内科",
+      "Physician_Code": "10001",
+      "Physician_WholeName": "内科\u3000太郎",
+      "Medical_Information": "02",
+      "Patient_Information": { "WholeName": "青山真二" },
+      "Display_Order": { "Display_Order_Number": "9999" }
+    }
   }
-}
+]
