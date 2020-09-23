@@ -53,9 +53,8 @@ class Acceptance(db.Model):
         if len(or_data["data"]) > 0:
             for o_d in or_data["data"]:
                 if (
-                    "Patient_Information"
-                    in o_d.keys() & "Patient_ID"
-                    in o_d["Patient_Information"].keys()
+                    "Patient_Information" in o_d.keys()
+                    and "Patient_ID" in o_d["Patient_Information"].keys()
                 ):
                     p_id = o_d["Patient_Information"]["Patient_ID"]
                     acc_id = o_d["Acceptance_ID"]
@@ -74,6 +73,7 @@ class Acceptance(db.Model):
                         LastVisit_Date=last_visit_date,
                         Patient_Memo="",
                     )
+                    print(pati)
                     if Patient.is_patient(Patient, p_id):
                         db.session.merge(pati)
                     else:
@@ -95,10 +95,13 @@ class Acceptance(db.Model):
                     if Acceptance.is_acceptance(
                         selected_date=selected_date, acceptance_id=acc_id
                     ):
+                        print(acc)
                         db.session.merge(acc)
                     else:
+                        print(acc)
                         db.session.add(acc)
                     db.session.commit()
+            print(or_data)
         return or_data
 
     def cancel(acceptance_id, patient_id, selected_date, acceptance_time):

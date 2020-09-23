@@ -1,12 +1,30 @@
 import json
+import os
 
-from flask import Blueprint, jsonify, make_response, request
+from flask import Blueprint, jsonify, make_response, request, session
 
+# from app import socketio
 from orcalib.or_utils import calc_age
 from serve.models.m_acceptance import Acceptance, AcceptanceSchema
 from serve.models.m_patient import PatientSchema
 
+# from flask_socketio import emit
+
+
 acceptance_router = Blueprint("acceptance_router", __name__)
+
+user_no = 1
+
+
+@acceptance_router.before_request
+def acc_befor_request():
+    global user_no
+    if "session" in session and "user-id" in session:
+        pass
+    else:
+        session["session"] = os.urandom(24)
+        session["username"] = "user" + str(user_no)
+        user_no += 1
 
 
 @acceptance_router.route("acceptances", methods=["POST"])
@@ -65,21 +83,6 @@ def get_receipt_data_f():
     data_big = json.loads(data["default"]["BigData"])
     data["default"] = data_big
     Acceptance.get_receipt_data(data)
-    # Acceptance.check(selected_date=data["acc_date"])
-    # acceptances = Acceptance.getList(selected_date=data["acc_date"])
-    # acceptance_schema = AcceptanceSchema()
-    # patient_schema = PatientSchema()
-    # data = []
-    # for acc in acceptances:
-    #     d1 = acceptance_schema.dump(acc[0])
-    #     d2 = patient_schema.dump(acc[1])
-    #     d1["WholeName_inKana"] = d2["WholeName_inKana"]
-    #     d1["WholeName"] = d2["WholeName"]
-    #     d1["BirthDate"] = calc_age(d2["BirthDate"])
-    #     d1["Sex"] = "男" if d2["Sex"] == "1" else "女"
-    #     d1["LastVisit_Date"] = d2["LastVisit_Date"]
-    #     d1["Patient_Memo"] = d2["Memo"]
-    #     data.append(d1)
 
     return make_response(jsonify(data))
 
@@ -103,3 +106,23 @@ def getClear():
 
 def registAcceptance():
     pass
+
+
+# @socketio.on("connect", namespace="/mynamespace")
+# def acc_connect():
+#     emit("response", {"data": "Connected", "username": session["username"]})
+
+
+# @socketio.on("disconnect", namespace="/mynamespace")
+# def acc_disconnect():
+#     session.clear()
+#     print("Disconnect")
+
+
+# @socketio.on("request", namespace="/mynamespace")
+# def acc_request(message):
+#     emit(
+#         "response",
+#         {"data": message["data"], "username": session["username"]},
+#         broadcast=True,
+#     )
