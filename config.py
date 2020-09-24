@@ -2,6 +2,8 @@ import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+acc_date = ""
+
 
 class Config(object):
     DEBUG = True
@@ -12,3 +14,8 @@ class Config(object):
     SECRET_KEY = "my_secret_key"
 
     JSON_AS_ASCII = False
+
+
+def gvar_init():
+    global acc_date
+    acc_date = ""

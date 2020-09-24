@@ -73,7 +73,6 @@ class Acceptance(db.Model):
                         LastVisit_Date=last_visit_date,
                         Patient_Memo="",
                     )
-                    print(pati)
                     if Patient.is_patient(Patient, p_id):
                         db.session.merge(pati)
                     else:
@@ -95,13 +94,10 @@ class Acceptance(db.Model):
                     if Acceptance.is_acceptance(
                         selected_date=selected_date, acceptance_id=acc_id
                     ):
-                        print(acc)
                         db.session.merge(acc)
                     else:
-                        print(acc)
                         db.session.add(acc)
                     db.session.commit()
-            print(or_data)
         return or_data
 
     def cancel(acceptance_id, patient_id, selected_date, acceptance_time):

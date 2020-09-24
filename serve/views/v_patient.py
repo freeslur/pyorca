@@ -20,7 +20,6 @@ def get_patient_list():
 def get_patient():
     pati_id = request.args.get("id")
     pati = ORPatient.get_info(patient_id=pati_id)
-    print(pati)
     return make_response(jsonify(pati))
 
 

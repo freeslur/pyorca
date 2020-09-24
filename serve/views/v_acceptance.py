@@ -1,7 +1,8 @@
 import json
-import os
 
-from flask import Blueprint, jsonify, make_response, request, session
+from flask import Blueprint, jsonify, make_response, request
+
+import config
 
 # from app import socketio
 from orcalib.or_utils import calc_age
@@ -13,25 +14,24 @@ from serve.models.m_patient import PatientSchema
 
 acceptance_router = Blueprint("acceptance_router", __name__)
 
-user_no = 1
+# user_no = 1
 
 
-@acceptance_router.before_request
-def acc_befor_request():
-    global user_no
-    if "session" in session and "user-id" in session:
-        pass
-    else:
-        session["session"] = os.urandom(24)
-        session["username"] = "user" + str(user_no)
-        user_no += 1
+# @acceptance_router.before_request
+# def acc_befor_request():
+#     global user_no
+#     if "session" in session and "user-id" in session:
+#         pass
+#     else:
+#         session["session"] = os.urandom(24)
+#         session["username"] = "user" + str(user_no)
+#         user_no += 1
 
 
-@acceptance_router.route("acceptances", methods=["POST"])
-def get_acceptance_list():
-    date = request.get_json()["acceptance_date"]
-    Acceptance.check(selected_date=date)
-    acceptances = Acceptance.get_list(selected_date=date)
+def get_acc_datas():
+    print("acc_date : ==========================", config.acc_date)
+    Acceptance.check(selected_date=config.acc_date)
+    acceptances = Acceptance.get_list(selected_date=config.acc_date)
     acceptance_schema = AcceptanceSchema()
     patient_schema = PatientSchema()
     data = []
@@ -45,8 +45,19 @@ def get_acceptance_list():
         d1["LastVisit_Date"] = d2["LastVisit_Date"]
         d1["Patient_Memo"] = d2["Patient_Memo"]
         data.append(d1)
+    return data
 
-    return make_response(jsonify(data))
+
+@acceptance_router.route("acceptances", methods=["POST"])
+def get_acceptance_list():
+    config.acc_date = request.get_json()["acceptance_date"]
+    return make_response(jsonify(get_acc_datas()))
+
+
+@acceptance_router.route("acc_date/<date>", methods=["GET"])
+def set_acc_date(date=None):
+    config.acc_date = date
+    return {"code": 200, "data": {}}
 
 
 @acceptance_router.route("acceptances/cancel", methods=["POST"])
@@ -106,23 +117,3 @@ def getClear():
 
 def registAcceptance():
     pass
-
-
-# @socketio.on("connect", namespace="/mynamespace")
-# def acc_connect():
-#     emit("response", {"data": "Connected", "username": session["username"]})
-
-
-# @socketio.on("disconnect", namespace="/mynamespace")
-# def acc_disconnect():
-#     session.clear()
-#     print("Disconnect")
-
-
-# @socketio.on("request", namespace="/mynamespace")
-# def acc_request(message):
-#     emit(
-#         "response",
-#         {"data": message["data"], "username": session["username"]},
-#         broadcast=True,
-#     )

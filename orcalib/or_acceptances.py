@@ -1,16 +1,17 @@
+import config
 import orcalib.or_default as orca
 from orcalib.or_patient import ORPatient
 from orcalib.or_utils import post_request, req_to_xml
 
 
 class ORAcceptance:
-    def __init__(self, selected_date):
-        self.selected_date = selected_date
+    def __init__(self):
+        self.acc_date = config.acc_date
         self.pati = ORPatient()
 
     def list_all(self):
         post_data = req_to_xml(
-            "acceptlstreq", req_data={"Acceptance_Date": self.selected_date}
+            "acceptlstreq", req_data={"Acceptance_Date": self.acc_date}
         )
 
         results = []
