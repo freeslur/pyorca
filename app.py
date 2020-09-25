@@ -5,8 +5,7 @@ from flask_socketio import SocketIO, emit
 
 from config import Config
 from serve.database import db
-from serve.events.acc_data import get_accs
-from serve.views.v_acceptance import acceptance_router
+from serve.views.v_acceptance import acceptance_router, get_acc_datas
 from serve.views.v_patient import patient_router
 
 app = Flask(__name__)
@@ -33,8 +32,7 @@ def background_thread():
     while True:
         socketio.sleep(10)
         count += 1
-        data = {"data": get_accs()}
-        print("data : : : : : :", data)
+        data = {"status": "push", "data": get_acc_datas()}
         socketio.emit(
             "accres",
             data,
@@ -47,13 +45,13 @@ def connect():
     global thread
     if thread is None:
         thread = socketio.start_background_task(target=background_thread)
-    emit("accres", {"data": "Connected"})
+    emit("accres", {"status": "Connected", "data": []})
 
 
-@socketio.on("acc_new", namespace="/accsocket")
-def acc_new(data, methods=["GET", "POST"]):
-    print(data)
-    emit("accres", {"data": "data"})
+# @socketio.on("acc_new", namespace="/accsocket")
+# def acc_new(data, methods=["GET", "POST"]):
+#     print(data)
+#     emit("accres", {"data": "data"})
 
 
 if __name__ == "__main__":

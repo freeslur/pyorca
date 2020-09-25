@@ -1,8 +1,7 @@
-from sqlalchemy import Column, Integer, String
-
 import config
-
-from . import Base
+from orcalib.or_acceptances import ORAcceptance
+from serve.data_cache import Base
+from sqlalchemy import Column, Integer, String
 
 
 class Acceptance(Base):
@@ -12,9 +11,6 @@ class Acceptance(Base):
     Acceptance_Time = Column(String(length=255))
     Status = Column(Integer)
     Patient_ID = Column(String(length=255))
-    InsuranceProvider_WholeName = Column(String(length=255))
-    Department_WholeName = Column(String(length=255))
-    Physician_WholeName = Column(String(length=255))
     Acceptance_Memo = Column(String(length=255))
 
     def __repr__(self):
@@ -27,9 +23,6 @@ class Acceptance(Base):
         acc_time,
         pati_id,
         status=0,
-        acc_insure="",
-        acc_depart="",
-        acc_physic="",
         acc_memo="",
     ):
         self.Acceptance_ID = acc_id
@@ -37,9 +30,6 @@ class Acceptance(Base):
         self.Acceptance_Time = acc_time
         self.Status = status
         self.Patient_ID = pati_id
-        self.InsuranceProvider_WholeName = acc_insure
-        self.Department_WholeName = acc_depart
-        self.Physician_WholeName = acc_physic
         self.Acceptance_Memo = acc_memo
 
     @staticmethod
@@ -49,9 +39,6 @@ class Acceptance(Base):
         acc_time,
         pati_id,
         status=0,
-        acc_insure="",
-        acc_depart="",
-        acc_physic="",
         acc_memo="",
     ):
         return {
@@ -60,12 +47,11 @@ class Acceptance(Base):
             "Acceptance_Time": acc_time,
             "Status": status,
             "Patient_ID": pati_id,
-            "InsuranceProvider_WholeName": acc_insure,
-            "Department_WholeName": acc_depart,
-            "Physician_WholeName": acc_physic,
             "Acceptance_Memo": acc_memo,
         }
 
 
 def get_or_acc_data():
-    acc_date = config.acc_date
+    ora = ORAcceptance(acc_date=config.acc_date)
+    data = ora.list_all()
+    return data

@@ -1,5 +1,4 @@
 default_url = "http://trial.orca.med.or.jp:8000"
-# default_url = "http://localhost:8000"
 system_info = "/api01rv2/systeminfv2"
 patient_basic_info = "/api01rv2/patientgetv2?"
 patient_newbie = "/api01rv2/patientlst1v2?class=01"
@@ -12,7 +11,6 @@ acceptance_cancel = "/orca11/acceptmodv2"
 regist_receipt = "/api21/medicalmodv2?class=01"
 post_headers = {"Content-Type": "application/xml"}
 auth = ("trial", "")
-# auth = ("ormaster", "ormaster")
 
 
 def acceptance_info(class_num):
