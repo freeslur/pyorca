@@ -1,6 +1,6 @@
 import config
 from orcalib.or_acceptances import ORAcceptance
-from serve.data_cache import Base
+from serve.data_cache import Base, session
 from sqlalchemy import Column, Integer, String
 
 
@@ -50,8 +50,18 @@ class Acceptance(Base):
             "Acceptance_Memo": acc_memo,
         }
 
+    @classmethod
+    def query(cls):
+        if not hasattr(cls, "_query"):
+            cls._query = session.query_property()
+        return cls._query
+
 
 def get_or_acc_data():
     ora = ORAcceptance(acc_date=config.acc_date)
     data = ora.list_all()
     return data
+
+
+def test():
+    return Acceptance.__tablename__

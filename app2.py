@@ -1,36 +1,88 @@
-from flask import Flask, session
-from flask_socketio import SocketIO, emit, join_room, leave_room
+import os
 
-from temp.routes import main_b
+from sqlalchemy import Column, Integer, String, create_engine
+from sqlalchemy.ext.declarative import declarative_base
 
-app = Flask(__name__)
-app.debug = True
-app.config["SECRET_KEY"] = "mysecret"
-socketio = SocketIO(app)
+db_engine = create_engine(
+    "sqlite:///"
+    + os.path.join(os.path.abspath(os.path.dirname(__file__)), "db/demo222.sqlite3")
+)
 
-
-app.register_blueprint(main_b)
-
-
-@socketio.on("joined", namespace="/chat")
-def joined(message):
-    room = session.get("room")
-    join_room(room)
-    emit("status", {"msg": session.get("name") + " has entered the room."}, room=room)
+Base = declarative_base()
 
 
-@socketio.on("text", namespace="/chat")
-def text(message):
-    room = session.get("room")
-    emit("message", {"msg": session.get("name") + " : " + message["msg"]}, room=room)
+Base.metadata.create_all(bind=db_engine)
 
 
-@socketio.on("left", namespace="/chat")
-def left(message):
-    room = session.get("room")
-    leave_room(room)
-    emit("status", {"msg": session.get("name") + " has left the room."}, room=room)
+class Patient(Base):
+    __tablename__ = "patients"
+    Patient_ID = Column(String(length=255), primary_key=True)
+    Patient_Memo = Column(String(length=255))
+
+    def __repr__(self):
+        return "<Patient %r>" % (self.Patient_ID)
+
+    def __init__(
+        self,
+        pati_id,
+        pati_memo="",
+    ):
+        self.Patient_ID = pati_id
+        self.Patient_Memo = pati_memo
+
+    @staticmethod
+    def create_dict(
+        pati_id,
+        pati_memo="",
+    ):
+        return {
+            "Patient_ID": pati_id,
+            "Patient_Memo": pati_memo,
+        }
 
 
-if __name__ == "__main__":
-    socketio.run(app, host="0.0.0.0", port=5000)
+class Acceptance(Base):
+    __tablename__ = "acceptances"
+    Acceptance_ID = Column(String(length=255), primary_key=True)
+    Acceptance_Date = Column(String(length=255), primary_key=True)
+    Acceptance_Time = Column(String(length=255))
+    Status = Column(Integer)
+    Patient_ID = Column(String(length=255))
+    Acceptance_Memo = Column(String(length=255))
+
+    def __repr__(self):
+        return "<Acceptance %r>" % (self.Acceptance_ID)
+
+    def __init__(
+        self,
+        acc_id,
+        acc_date,
+        acc_time,
+        pati_id,
+        status=0,
+        acc_memo="",
+    ):
+        self.Acceptance_ID = acc_id
+        self.Acceptance_Date = acc_date
+        self.Acceptance_Time = acc_time
+        self.Status = status
+        self.Patient_ID = pati_id
+        self.Acceptance_Memo = acc_memo
+
+    @staticmethod
+    def create_dict(
+        acc_id,
+        acc_date,
+        acc_time,
+        pati_id,
+        status=0,
+        acc_memo="",
+    ):
+        return {
+            "Acceptance_ID": acc_id,
+            "Acceptance_Date": acc_date,
+            "Acceptance_Time": acc_time,
+            "Status": status,
+            "Patient_ID": pati_id,
+            "Acceptance_Memo": acc_memo,
+        }
