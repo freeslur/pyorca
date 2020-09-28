@@ -1,7 +1,20 @@
 import config
 from orcalib.or_acceptances import ORAcceptance
-from serve.data_cache import Base, session
+from serve.data_cache.database import Base
 from sqlalchemy import Column, Integer, String
+
+# class Base(object):
+#     def __iter__(self):
+#         return iter(self.__dict__.items())
+
+#     def dict(self):
+#         return self.__dict__
+
+#     @classmethod
+#     def query(cls):
+#         if not hasattr(cls, "_query"):
+#             cls._query = session().query_property()
+#         return cls._query
 
 
 class Acceptance(Base):
@@ -50,12 +63,6 @@ class Acceptance(Base):
             "Acceptance_Memo": acc_memo,
         }
 
-    @classmethod
-    def query(cls):
-        if not hasattr(cls, "_query"):
-            cls._query = session.query_property()
-        return cls._query
-
 
 def get_or_acc_data():
     ora = ORAcceptance(acc_date=config.acc_date)
@@ -65,3 +72,30 @@ def get_or_acc_data():
 
 def test():
     return Acceptance.__tablename__
+
+
+class Patient(Base):
+    __tablename__ = "patients"
+    Patient_ID = Column(String(length=255), primary_key=True)
+    Patient_Memo = Column(String(length=255))
+
+    def __repr__(self):
+        return "<Patient %r>" % (self.Patient_ID)
+
+    def __init__(
+        self,
+        pati_id,
+        pati_memo="",
+    ):
+        self.Patient_ID = pati_id
+        self.Patient_Memo = pati_memo
+
+    @staticmethod
+    def create_dict(
+        pati_id,
+        pati_memo="",
+    ):
+        return {
+            "Patient_ID": pati_id,
+            "Patient_Memo": pati_memo,
+        }

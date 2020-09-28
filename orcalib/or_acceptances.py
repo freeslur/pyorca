@@ -68,7 +68,7 @@ class ORAcceptance:
             req_key="acceptreq",
             req_data={
                 "Request_Number": "02",
-                "Acceptance_Date": self.selected_date,
+                "Acceptance_Date": self.acc_date,
                 "Acceptance_Time": acc_time,
                 "Acceptance_Id": acc_id,
                 "Patient_ID": pati_id,

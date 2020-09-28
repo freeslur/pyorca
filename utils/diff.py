@@ -1,4 +1,5 @@
 import itertools
+from pprint import pprint
 
 
 class AccDiff:
@@ -14,13 +15,19 @@ class AccDiff:
         for rmdi in reversed(range(len(rmds))):
             for addi in reversed(range(len(adds))):
                 if adds[addi]["Acceptance_ID"] == rmds[rmdi]["Acceptance_ID"]:
-                    if rmds[rmdi]["Status"] not in [0, 2]:
-                        chgds.append(adds[addi])
+                    chgds.append(adds[addi])
                     adds.pop(addi)
                     rmds.pop(rmdi)
         self.added_data = adds
         self.removed_data = rmds
         self.changed_data = chgds
+        pprint(
+            {
+                "add": self.added_data,
+                "change": self.changed_data,
+                "remove": self.removed_data,
+            }
+        )
 
     def added(self):
         return self.added_data

@@ -1,10 +1,13 @@
 from pprint import pprint
 
-from sqlalchemy import and_, desc, func, insert, select, update
-
 from orcalib.or_acceptances import ORAcceptance
-from serve import data_cache
-from serve.data_cache.MAcceptance import Acceptance, test
+from serve.data_cache import database
+from serve.data_cache.caching import (
+    delete_acceptance,
+    insert_acceptance,
+    select_acceptance,
+    update_acceptance,
+)
 from utils.diff import AccDiff
 
 ora = ORAcceptance(acc_date="2020-09-25")
@@ -24,67 +27,20 @@ for d in data["data"]:
 
 pprint(acc_data)
 # print(acc_data)
-data_cache
-accs = Acceptance.query().order_by(desc(Acceptance.Acceptance_ID)).all()
-pprint(accs)
+database.init()
+accdiff = AccDiff()
 
-a = [
-    {
-        "Acceptance_Date": "2020-09-25",
-        "Acceptance_ID": "00001",
-        "Acceptance_Time": "13:19:52",
-        "Status": "2",
-        "Patient_ID": "00005",
-    },
-    {
-        "Acceptance_Date": "2020-09-25",
-        "Acceptance_ID": "00002",
-        "Acceptance_Time": "13:20:11",
-        "Status": "0",
-        "Patient_ID": "00008",
-    },
-    {
-        "Acceptance_Date": "2020-09-25",
-        "Acceptance_ID": "00003",
-        "Acceptance_Time": "13:20:22",
-        "Status": "0",
-        "Patient_ID": "00010",
-    },
-    {
-        "Acceptance_Date": "2020-09-25",
-        "Acceptance_ID": "00004",
-        "Acceptance_Time": "17:32:52",
-        "Status": "0",
-        "Patient_ID": "00002",
-    },
-]
-b = [
-    {
-        "Acceptance_Date": "2020-09-25",
-        "Acceptance_ID": "00001",
-        "Acceptance_Time": "13:19:52",
-        "Status": "2",
-        "Patient_ID": "00005",
-    },
-    {
-        "Acceptance_Date": "2020-09-25",
-        "Acceptance_ID": "00003",
-        "Acceptance_Time": "13:20:22",
-        "Status": "0",
-        "Patient_ID": "00010",
-    },
-    {
-        "Acceptance_Date": "2020-09-25",
-        "Acceptance_ID": "00004",
-        "Acceptance_Time": "17:32:52",
-        "Status": "2",
-        "Patient_ID": "00002",
-    },
-    {
-        "Acceptance_Date": "2020-09-25",
-        "Acceptance_ID": "00005",
-        "Acceptance_Time": "17:42:52",
-        "Status": "0",
-        "Patient_ID": "00002",
-    },
-]
+prev = select_acceptance(acc_date="2020-09-25")
+accdiff.diff(prev, acc_data)
+if len(accdiff.added()):
+    insert_acceptance(accdiff.added())
+if len(accdiff.changed()):
+    update_acceptance(accdiff.changed())
+if len(accdiff.removed()):
+    delete_acceptance(accdiff.removed())
+pprint(
+    {"add": accdiff.added(), "change": accdiff.changed(), "remove": accdiff.removed()}
+)
+nows = select_acceptance(acc_date="2020-09-25")
+pprint(nows)
+pprint(acc_data)

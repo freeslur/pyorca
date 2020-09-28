@@ -1,8 +1,10 @@
 import os
+from datetime import datetime
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-acc_date = ""
+ndate = datetime.now()
+acc_date = ndate.strftime("%Y-%m-%d")
 
 
 class Config(object):
