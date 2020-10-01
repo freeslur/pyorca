@@ -95,7 +95,42 @@ class ORAcceptance:
         data_perform = data["perform"]
         data_medical = data["medical"]
         p_data = {
-            "Patient_ID": data_default["Patient_Information"]["Patient_ID"],
+            "Patient_ID": data_default["Patient_ID"],
+            "Perform_Date": data_perform["Perform_Date"],
+            "Perform_Time": data_perform["Perform_Time"],
+            "Diagnosis_Information": {
+                "Department_Code": data_default["Department_Code"],
+                "Physician_Code": data_default["Physician_Code"],
+                "HealthInsurance_Information": data_default[
+                    "HealthInsurance_Information"
+                ],
+                "Medical_Information": data_medical["Medical_Information"],
+                "Disease_Information": data_medical["Disease_Information"],
+            },
+        }
+        post_data = req_to_xml(req_key="medicalreq", req_data=p_data)
+
+        result = {}
+        error = ""
+
+        json_data = post_request(
+            api_uri=orca.regist_receipt, res_key="medicalres", post_data=post_data
+        )
+        if json_data["Api_Result"] == "00":
+            result = json_data
+            error = "00"
+        else:
+            error = json_data["Api_Result"] + " : " + json_data["Api_Result_Message"]
+
+        result = {"data": json_data, "error": error}
+        return result
+
+    def send_receipt_test(data):
+        data_default = data["default"]
+        data_perform = data["perform"]
+        data_medical = data["medical"]
+        p_data = {
+            "Patient_ID": data_default["Patient_ID"],
             "Perform_Date": data_perform["Perform_Date"],
             "Perform_Time": data_perform["Perform_Time"],
             "Diagnosis_Information": {

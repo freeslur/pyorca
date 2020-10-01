@@ -7,5 +7,7 @@ patient_router = Blueprint("patient_router", __name__)
 @patient_router.route("patient", methods=["GET"])
 def get_patient():
     pati_id = request.args.get("id")
-    pati = ORPatient.get_info(patient_id=pati_id)
+    print(pati_id)
+    orp = ORPatient(pati_id=pati_id)
+    pati = orp.get_info()
     return make_response(jsonify(pati))

@@ -30,7 +30,7 @@ thread = None
 def background_thread():
     count = 0
     while True:
-        socketio.sleep(10)
+        socketio.sleep(5)
         count += 1
         data = {"status": "push", "data": get_acc_datas()}
         socketio.emit(

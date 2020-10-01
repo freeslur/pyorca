@@ -82,6 +82,14 @@ def get_receipt_data_f():
     return make_response(jsonify(data))
 
 
+@acceptance_router.route("acceptances/send_test", methods=["POST"])
+def get_receipt_data_f_test():
+    data = request.get_json()
+    ORAcceptance.send_receipt_test(data)
+
+    return make_response(jsonify(data))
+
+
 @acceptance_router.route("acceptances/cancel", methods=["POST"])
 def cancel_receipt():
     data = request.get_json()
