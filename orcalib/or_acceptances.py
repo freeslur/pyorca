@@ -91,11 +91,12 @@ class ORAcceptance:
         return result
 
     def send_receipt(data):
+        print(data)
         data_default = data["default"]
         data_perform = data["perform"]
         data_medical = data["medical"]
         p_data = {
-            "Patient_ID": data_default["Patient_ID"],
+            "Patient_ID": data_default["Patient_Information"]["Patient_ID"],
             "Perform_Date": data_perform["Perform_Date"],
             "Perform_Time": data_perform["Perform_Time"],
             "Diagnosis_Information": {
@@ -161,7 +162,7 @@ class ORAcceptance:
         return result
 
 
-class ORAcceptance2:
+class ORAcceptance2222:
     def __init__(self, acc_date):
         self.acc_date = acc_date
         self.pati = ORPatient()

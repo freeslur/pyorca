@@ -8,7 +8,7 @@ Authorization: Basic trial:
   </acceptlstreq>
 </data>
 
-###
+### 診療行為
 
 POST http://trial.orca.med.or.jp:8000/api01rv2/medicalgetv2?class=01
 Content-Type: application/xml
@@ -17,12 +17,12 @@ Authorization: Basic trial:
 <data>
         <medicalgetreq type="record">
                 <Patient_ID type="string">3</Patient_ID>
-                <Perform_Date type="string">2020-10-01</Perform_Date>
+                <Perform_Date type="string">2020-10-08</Perform_Date>
         </medicalgetreq>
 </data>
 
 
-###
+### 来院患者一覧
 
 POST http://trial.orca.med.or.jp:8000/api01rv2/visitptlstv2
 Content-Type: application/xml
@@ -31,11 +31,11 @@ Authorization: Basic trial:
 <data>
     <visitptlstreq type="record">
         <Request_Number type="string">01</Request_Number>
-        <Visit_Date type="string">2020-10-01</Visit_Date>
+        <Visit_Date type="string">2020-10-08</Visit_Date>
 　　</visitptlstreq>
 </data>
 
-###
+### 中途終了一覧
 
 POST http://trial.orca.med.or.jp:8000/api01rv2/tmedicalgetv2
 Content-Type: application/xml
@@ -43,7 +43,7 @@ Authorization: Basic trial:
 
 <data>
         <tmedicalgetreq type="record">
-                <Perform_Date type="string">2020-10-01</Perform_Date>
+                <Perform_Date type="string">2020-10-08</Perform_Date>
                 <Patient_ID type="string"></Patient_ID>
         </tmedicalgetreq>
 </data>

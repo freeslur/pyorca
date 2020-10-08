@@ -77,17 +77,18 @@ def get_receipt_data_f():
     data = request.get_json()
     data_big = data["default"]["BigData"]
     data["default"] = data_big
-    ORAcceptance.send_receipt(data)
-
-    return make_response(jsonify(data))
+    res = ORAcceptance.send_receipt(data)
+    print(res)
+    return make_response(jsonify(res))
 
 
 @acceptance_router.route("acceptances/send_test", methods=["POST"])
 def get_receipt_data_f_test():
     data = request.get_json()
-    ORAcceptance.send_receipt_test(data)
+    print(data)
+    res = ORAcceptance.send_receipt_test(data)
 
-    return make_response(jsonify(data))
+    return make_response(jsonify(res))
 
 
 @acceptance_router.route("acceptances/cancel", methods=["POST"])
